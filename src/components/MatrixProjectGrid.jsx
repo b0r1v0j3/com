@@ -42,7 +42,7 @@ const MatrixProjectGrid = () => {
           transform: translateY(-2px);
         }
         .card-header {
-          background: var(--matrix-green-dim);
+          background: #006400;
           color: var(--matrix-bg);
           padding: 8px 12px;
           display: flex;
