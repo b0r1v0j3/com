@@ -13,7 +13,7 @@
   {
     "id": "2",
     "title": "Podovi",
-    "description": "Flooring and interior design application. [Description to be updated]",
+    "description": "Online flooring store.",
     "tech": [
       "Next.js",
       "Tailwind"
