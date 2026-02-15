@@ -59,8 +59,12 @@ const MatrixProjectGrid = () => {
         .description {
           font-size: 0.9rem;
           line-height: 1.5;
+        .description {
+          font-size: 0.9rem;
+          line-height: 1.5;
           margin-bottom: 16px;
-          color: var(--matrix-text-secondary);
+          color: rgba(0, 255, 65, 0.9);
+          text-shadow: 0 0 2px rgba(0, 255, 65, 0.3);
         }
         .tech-stack {
           display: flex;
