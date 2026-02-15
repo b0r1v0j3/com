@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "Workers United",
-    "description": "A platform dedicated to uniting workers. [Description to be updated]",
+    "description": "Platform for workers and employers.",
     "tech": [
       "React",
       "Node.js"

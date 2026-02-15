@@ -34,6 +34,7 @@ const MatrixProjectGrid = () => {
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          height: 100%;
         }
         .matrix-card:hover {
           border-color: var(--matrix-green);
