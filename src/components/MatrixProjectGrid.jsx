@@ -1,25 +1,25 @@
 import projects from '../data/projects.json';
 
 const MatrixProjectGrid = () => {
-    return (
-        <div className="matrix-grid">
-            {projects.map(p => (
-                <div key={p.id} className="matrix-card">
-                    <div className="card-header">
-                        <span className="card-title">{'>'} {p.title}</span>
-                        <span className="card-id">ID: {p.id.padStart(3, '0')}</span>
-                    </div>
-                    <div className="card-body">
-                        <p className="description">{p.description}</p>
-                        <div className="tech-stack">
-                            {p.tech.map(t => <span key={t}>[{t}]</span>)}
-                        </div>
-                        <a href={p.link} className="access-btn">ACCESS_PROJECT()</a>
-                    </div>
-                </div>
-            ))}
+  return (
+    <div className="matrix-grid">
+      {projects.map(p => (
+        <div key={p.id} className="matrix-card">
+          <div className="card-header">
+            <span className="card-title">{'>'} {p.title}</span>
+            <span className="card-id">ID: {p.id.padStart(3, '0')}</span>
+          </div>
+          <div className="card-body">
+            <p className="description">{p.description}</p>
+            <div className="tech-stack">
+              {p.tech.map(t => <span key={t}>[{t}]</span>)}
+            </div>
+            <a href={p.link} target="_blank" rel="noopener noreferrer" className="access-btn">ACCESS_PROJECT()</a>
+          </div>
+        </div>
+      ))}
 
-            <style>{`
+      <style>{`
         .matrix-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -80,8 +80,8 @@ const MatrixProjectGrid = () => {
           box-shadow: 0 0 10px var(--matrix-green);
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default MatrixProjectGrid;
