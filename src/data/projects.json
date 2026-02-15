@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "Workers United",
-    "description": "Platform for workers and employers.",
+    "description": "Protocol for human resources synchronization. Establishes a secure link between operative units and system architects. Optimizing the labor market code.",
     "tech": [
       "React",
       "Node.js"
