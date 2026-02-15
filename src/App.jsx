@@ -142,7 +142,6 @@ function App() {
           margin-top: 80px;
           text-align: center;
           color: var(--matrix-green);
-          font-weight: bold;
           font-size: 0.9rem;
           border-top: 1px dashed var(--matrix-green-dim);
           padding-top: 24px;
