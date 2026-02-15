@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "AI Personal Website",
+    "description": "A React-based personal portfolio that acts like an AI chat interface. Features simulated conversation, reliable keyword matching, and a premium dark mode aesthetic.",
+    "tech": ["React", "Vite", "CSS Variables"],
+    "link": "#",
+    "image": "https://placehold.co/600x400/1e293b/38bdf8?text=AI+Portfolio"
+  },
+  {
+    "id": "2",
+    "title": "E-Commerce Bundle",
+    "description": "Optimized product page bundle for high-performance e-commerce sites. Reduced load time by 40% via server-side data fetching.",
+    "tech": ["Next.js", "Node.js", "Redis"],
+    "link": "#",
+    "image": "https://placehold.co/600x400/1e293b/38bdf8?text=E-Commerce"
+  },
+  {
+    "id": "3",
+    "title": "Visa Auto-Docs",
+    "description": "Automated system for generating work visa documents (Contracts, POAs) from passport data. Saves 20+ hours of manual work per week.",
+    "tech": ["Python", "DocxTpl", "Supabase"],
+    "link": "#",
+    "image": "https://placehold.co/600x400/1e293b/38bdf8?text=Visa+Docs"
+  }
+]
