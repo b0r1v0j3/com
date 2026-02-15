@@ -58,7 +58,7 @@ function App() {
 
             <footer className="footer">
               <p>SYSTEM_STATUS: ONLINE</p>
-              <p>© {new Date().getFullYear()} [b0r1v0j3]</p>
+              <p>© 1992 [b0r1v0j3]</p>
             </footer>
           </div>
         )}
@@ -141,8 +141,9 @@ function App() {
         .footer {
           margin-top: 80px;
           text-align: center;
-          color: var(--matrix-green-dim);
-          font-size: 0.8rem;
+          color: var(--matrix-green);
+          font-weight: bold;
+          font-size: 0.9rem;
           border-top: 1px dashed var(--matrix-green-dim);
           padding-top: 24px;
         }
