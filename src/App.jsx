@@ -58,7 +58,7 @@ function App() {
 
             <footer className="footer">
               <p>SYSTEM_STATUS: ONLINE</p>
-              <p>© {new Date().getFullYear()} b0r1v0j3</p>
+              <p>© {new Date().getFullYear()} [b0r1v0j3]</p>
             </footer>
           </div>
         )}
