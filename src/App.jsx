@@ -114,7 +114,7 @@ function App() {
           border: 0;
           height: 1px;
           background: linear-gradient(90deg, transparent, var(--matrix-green-dim), transparent);
-          margin: 60px 0;
+          margin: 20px 0;
         }
         
         .section-title {
