@@ -1,20 +1,44 @@
 [
     {
-        "id": "gh",
-        "name": "GitHub",
-        "url": "https://github.com/",
-        "icon": "github"
+        "id": "x",
+        "name": "X (Twitter)",
+        "url": "https://x.com/b0r1v0j3",
+        "icon": "twitter"
+    },
+    {
+        "id": "fb",
+        "name": "Facebook",
+        "url": "https://www.facebook.com/b0r1v0j3",
+        "icon": "facebook"
+    },
+    {
+        "id": "ig",
+        "name": "Instagram",
+        "url": "https://www.instagram.com/b0r1v0j3/",
+        "icon": "instagram"
     },
     {
         "id": "li",
         "name": "LinkedIn",
-        "url": "https://linkedin.com/",
+        "url": "https://www.linkedin.com/in/borivoje-cvetkovi%C4%87/",
         "icon": "linkedin"
+    },
+    {
+        "id": "yt",
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@B0R1V0J3",
+        "icon": "youtube"
     },
     {
         "id": "email",
         "name": "Email",
-        "url": "mailto:user@example.com",
+        "url": "mailto:b0r1v0j3@b0r1v0j3.com",
         "icon": "mail"
+    },
+    {
+        "id": "wa",
+        "name": "WhatsApp",
+        "url": "https://wa.me/38166033333",
+        "icon": "phone"
     }
 ]
