@@ -32,6 +32,8 @@ const MatrixProjectGrid = () => {
           transition: all 0.3s;
           position: relative;
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
         }
         .matrix-card:hover {
           border-color: var(--matrix-green);
@@ -49,6 +51,9 @@ const MatrixProjectGrid = () => {
         }
         .card-body {
           padding: 16px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
         }
         .description {
           font-size: 0.9rem;
@@ -62,6 +67,7 @@ const MatrixProjectGrid = () => {
           gap: 8px;
           margin-bottom: 20px;
           font-size: 0.8rem;
+          margin-top: auto;
         }
         .access-btn {
           display: inline-block;
