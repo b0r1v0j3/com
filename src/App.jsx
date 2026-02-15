@@ -38,7 +38,7 @@ function App() {
 
         {showContent && (
           <div className="content-layer fade-in-slow">
-            <hr className="matrix-divider" />
+
 
             <section className="projects-section">
               <h2 className="section-title">SYSTEM_MODULES // PROJECTS</h2>
@@ -110,12 +110,7 @@ function App() {
           box-shadow: 0 0 20px var(--matrix-green);
         }
         
-        .matrix-divider {
-          border: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, var(--matrix-green-dim), transparent);
-          margin: 20px 0;
-        }
+
         
         .section-title {
           font-size: 1.5rem;
