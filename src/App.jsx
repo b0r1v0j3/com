@@ -2,6 +2,7 @@ import { useState } from 'react';
 import MatrixRain from './components/MatrixRain';
 import Typewriter from './components/Typewriter';
 import MatrixProjectGrid from './components/MatrixProjectGrid';
+import BackgroundMusic from './components/BackgroundMusic';
 import links from './data/links.json';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <MatrixRain />
+      <BackgroundMusic playing={showContent} />
       <div className="scanline"></div>
 
       <main className="container">
