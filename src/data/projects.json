@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "title": "Workers United",
+    "title": "workers united",
     "description": "Protocol for human resources synchronization. Establishes a secure link between operative units and system architects. Optimizing the labor market code.",
     "tech": [
       "React",
@@ -12,8 +12,8 @@
   },
   {
     "id": "2",
-    "title": "Podovi",
-    "description": "Online flooring store.",
+    "title": "podovi",
+    "description": "Repository of surface layers. [Material_Library]: LOADED. High-grade textures and assets for upgrading your space construct.",
     "tech": [
       "Next.js",
       "Tailwind"
