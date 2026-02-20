@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "workers_united",
-    "description": "Protocol for human resources synchronization. Establishes a secure link between operative units and system architects. Optimizing the labor market code.",
+    "description": "A full-service digital platform connecting international employers with qualified workforce candidates. Streamlines the recruitment pipeline, visa documentation, and onboarding processes across European markets.",
     "tech": [
       "Next.js",
       "Tailwind"
@@ -13,7 +13,7 @@
   {
     "id": "2",
     "title": "podovi",
-    "description": "Repository of surface layers. [Material_Library]: LOADED. High-grade textures and assets for upgrading your space construct.",
+    "description": "An e-commerce catalogue and advisory platform for premium flooring solutions. Features an extensive product library of laminates, vinyls, and engineered surfaces from leading European manufacturers.",
     "tech": [
       "Next.js",
       "Tailwind"
