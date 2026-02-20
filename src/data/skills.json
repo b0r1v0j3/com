@@ -1,0 +1,42 @@
+[
+    {
+        "id": "react",
+        "name": "React"
+    },
+    {
+        "id": "nextjs",
+        "name": "Next.js"
+    },
+    {
+        "id": "tailwind",
+        "name": "Tailwind CSS"
+    },
+    {
+        "id": "javascript",
+        "name": "JavaScript"
+    },
+    {
+        "id": "typescript",
+        "name": "TypeScript"
+    },
+    {
+        "id": "node",
+        "name": "Node.js"
+    },
+    {
+        "id": "git",
+        "name": "Git"
+    },
+    {
+        "id": "figma",
+        "name": "Figma"
+    },
+    {
+        "id": "supabase",
+        "name": "Supabase"
+    },
+    {
+        "id": "htmlcss",
+        "name": "HTML/CSS"
+    }
+]

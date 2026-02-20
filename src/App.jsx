@@ -3,6 +3,7 @@ import MatrixRain from './components/MatrixRain';
 import Typewriter from './components/Typewriter';
 import MatrixProjectGrid from './components/MatrixProjectGrid';
 import BackgroundMusic from './components/BackgroundMusic';
+import SkillsDownload from './components/SkillsDownload';
 import links from './data/links.json';
 
 function App() {
@@ -41,6 +42,11 @@ function App() {
         {showContent && (
           <div className="content-layer fade-in-slow">
 
+
+            <section className="skills-section">
+              <h2 className="section-title">KNOWLEDGE_BASE // SKILLS</h2>
+              <SkillsDownload />
+            </section>
 
             <section className="projects-section">
               <h2 className="section-title">SYSTEM_MODULES // PROJECTS</h2>
