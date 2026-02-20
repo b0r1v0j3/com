@@ -7,6 +7,7 @@ import MatrixProjectGrid from './components/MatrixProjectGrid';
 import BackgroundMusic from './components/BackgroundMusic';
 import SkillsDownload from './components/SkillsDownload';
 import links from './data/links.json';
+import './index.css'; // Import Matrix styles exclusively here
 
 // Extract the original Matrix App into a sub-component for cleaner routing
 function MatrixApp() {
