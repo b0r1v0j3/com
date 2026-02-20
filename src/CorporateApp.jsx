@@ -61,28 +61,46 @@ function CorporateApp() {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     setCurrentDate(d.toLocaleDateString('en-US', options).toUpperCase());
 
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    revealElements.forEach(el => observer.observe(el));
+
     // Add corporate theme class to HTML for global overrides (like scrollbar)
     document.documentElement.classList.add('theme-corporate');
+    document.documentElement.style.scrollBehavior = 'smooth';
+
     return () => {
       document.documentElement.classList.remove('theme-corporate');
+      document.documentElement.style.scrollBehavior = 'auto';
+      observer.disconnect();
     };
   }, []);
 
   return (
-    <div className="bg-white min-h-screen text-black font-serif selection:bg-black selection:text-white pb-24 border-x-[16px] border-white">
+    <div className="bg-white min-h-screen text-black font-serif selection:bg-black selection:text-white pb-24 border-x-[16px] border-white relative">
+      <div className="corporate-noise"></div>
 
       {/* ── Newspaper Top Meta Line ── */}
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-2 flex justify-between items-center border-b border-black/30 font-sans text-[9px] md:text-[10px] tracking-widest text-black/70">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-2 flex justify-between items-center border-b border-black/30 font-sans text-[9px] md:text-[10px] tracking-widest text-black/70 sticky top-0 z-[60] bg-white/90 backdrop-blur-sm shadow-[0_4px_30px_rgba(255,255,255,1)]">
         <span>VOL. I ... No. 1</span>
         <span className="hidden md:inline-block">BELGRADE, SERBIA</span>
         <span>{currentDate}</span>
       </div>
 
       {/* ── Firm Header (Editorial Style) ── */}
-      <header className="bg-white text-black border-b-[4px] border-double border-black shadow-none sticky top-0 z-50 transition-all duration-300">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-8 flex flex-col items-center justify-center relative">
+      <header className="bg-white/95 backdrop-blur shadow-none sticky top-[34px] z-50 border-b-[3px] border-black transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-8 flex flex-col items-center justify-center relative inner-header">
+          <div className="absolute bottom-[-6px] left-0 right-0 h-[1px] bg-black"></div>
 
-          <h1 className="font-serif text-4xl md:text-7xl font-black tracking-tighter text-center leading-none mb-3 transform hover:scale-[1.01] transition-transform duration-500">
+          <h1 className="font-serif text-4xl md:text-7xl font-black tracking-tighter text-center leading-none mb-3 transform hover:scale-[1.01] transition-transform duration-700">
             BORIVOJE CVETKOVIĆ
           </h1>
           <h2 className="text-black text-[10px] md:text-xs font-sans tracking-[0.25em] md:tracking-[0.4em] font-semibold uppercase italic opacity-90">
@@ -109,10 +127,10 @@ function CorporateApp() {
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-16">
 
         {/* ── Institution Hero ── */}
-        <section id="firm" className="py-12 border-b-2 border-black mb-16">
+        <section id="firm" className="py-12 border-b-2 border-black mb-16 reveal-on-scroll">
           <div className="flex flex-col md:flex-row gap-12 items-stretch">
             <div className="flex-1">
-              <h2 className="text-3xl md:text-5xl font-serif font-black text-black leading-tight mb-8">
+              <h2 className="text-3xl md:text-5xl font-serif font-black text-black leading-[1.1] mb-8 pr-12">
                 Structuring Scalable<br className="hidden md:block" /> Digital Assets.
               </h2>
               <div className="text-lg md:text-xl text-gray-900 leading-relaxed mb-10 font-serif max-w-2xl relative">
@@ -145,8 +163,9 @@ function CorporateApp() {
         </section>
 
         {/* ── Structured Portfolio ── */}
-        <section id="portfolio" className="py-8">
-          <div className="border-t-4 border-black pt-4 mb-2 flex justify-between items-end">
+        <section id="portfolio" className="py-8 reveal-on-scroll">
+          <div className="border-t-[3px] border-black pt-4 mb-2 flex justify-between items-end relative">
+            <div className="absolute top-[-7px] left-0 right-0 h-[1px] bg-black"></div>
             <h2 className="text-2xl md:text-3xl font-serif font-black text-black">CLIENT HOLDINGS</h2>
             <span className="font-sans text-[9px] tracking-[0.15em] text-gray-500 uppercase font-bold hidden md:block">Public & Confidential</span>
           </div>
@@ -161,9 +180,9 @@ function CorporateApp() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group block relative ${index % 2 === 0 ? 'md:border-r md:border-black/20 md:pr-12' : ''}`}
+                className={`group block relative reveal-on-scroll ${index % 2 === 0 ? 'md:border-r md:border-black/20 md:pr-12 delay-100' : 'delay-200'} `}
               >
-                <article className="flex flex-col h-full">
+                <article className="flex flex-col h-full transform transition-transform duration-500 hover:-translate-y-1">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <p className="font-sans text-[9px] tracking-widest uppercase text-gray-500 font-bold mb-1">Index No. {String(index + 1).padStart(2, '0')}</p>
@@ -221,8 +240,10 @@ function CorporateApp() {
         </section>
 
         {/* ── Contact Section ── */}
-        <section id="contact" className="pt-20 border-t border-black/30 mt-16">
+        <section id="contact" className="pt-20 border-t border-black/30 mt-16 reveal-on-scroll">
           <div className="text-center flex flex-col items-center bg-white relative max-w-2xl mx-auto py-12 border-t-[3px] border-b-[3px] border-black">
+            <div className="absolute top-[-7px] left-0 right-0 h-[1px] bg-black"></div>
+            <div className="absolute bottom-[-7px] left-0 right-0 h-[1px] bg-black"></div>
 
             <h2 className="text-2xl md:text-3xl font-serif font-black text-black mb-3">CORRESPONDENCE</h2>
             <p className="text-gray-700 font-serif text-base italic mb-8 px-4">
