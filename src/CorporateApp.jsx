@@ -196,16 +196,16 @@ function CorporateApp() {
                   <div className="bg-white overflow-hidden mb-5 border border-black relative">
                     <div className="w-full h-48 md:h-56 overflow-hidden relative grayscale contrast-125 sepia-[.1] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700">
                       {project.title === 'podovi' ? (
-                        <div className="absolute inset-0">
+                        <div className="absolute inset-0 bg-[#ebebeb] flex items-center justify-center p-0.5">
                           <img
                             src={project.customImage}
                             alt={project.title}
-                            className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:scale-105 duration-700"
+                            className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:scale-105 duration-700 shadow-sm"
                             loading="lazy"
                           />
                         </div>
                       ) : (
-                        <div className="absolute w-[400%] h-[400%] top-0 left-0" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
+                        <div className="absolute w-[400%] h-[400%] top-0 left-0 bg-[#ebebeb]" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
                           <img
                             src={`https://image.thum.io/get/width/800/crop/800/noanimate/${project.link}`}
                             alt={project.title}
