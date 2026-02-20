@@ -85,7 +85,7 @@ const IntroScreen = ({ onChoice }) => {
 
         .dialogue-box {
           position: absolute;
-          top: 8%;
+          top: 4%;
           z-index: 20;
           text-align: center;
           width: 100%;
@@ -112,13 +112,14 @@ const IntroScreen = ({ onChoice }) => {
           height: 100vh;
           display: flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-end; /* Align to bottom so head has room */
         }
 
         .morpheus-bg {
           width: 100%;
-          height: 100%;
-          object-fit: contain; /* Keeps image proportions without cropping the hands */
+          height: 90vh; /* Leave room at top for text */
+          object-fit: contain;
+          object-position: bottom center;
         }
 
         .interactive-pills-layer {
