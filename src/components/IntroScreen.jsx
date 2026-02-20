@@ -23,12 +23,12 @@ const IntroScreen = ({ onChoice }) => {
   return (
     <div className="dark-intro-container">
 
-      {/* Text at the very top, separate from image */}
+      {/* Typewriter text at the top */}
       <div className="dialogue-box">
         <p key={dialogue} className="dialogue-text">{dialogue}</p>
       </div>
 
-      {/* Morpheus image pushed below text, with clickable pill zones */}
+      {/* Morpheus image with clickable pill zones */}
       <div className="morpheus-section">
         <div className="morpheus-wrapper">
           <img
@@ -37,19 +37,23 @@ const IntroScreen = ({ onChoice }) => {
             className="morpheus-img"
           />
 
-          {/* Clickable zones directly on the pills in his hands */}
+          {/* Invisible clickable zones on the pills + labels */}
           {showPills && (
             <>
               <button
-                className="pill-zone red-pill-zone fade-in-slow"
+                className="pill-zone red-zone fade-in-slow"
                 onClick={() => onChoice('matrix')}
-                aria-label="Red Pill - The Matrix"
-              />
+                aria-label="Red Pill"
+              >
+                <span className="pill-label red-label">Red Pill</span>
+              </button>
               <button
-                className="pill-zone blue-pill-zone fade-in-slow"
+                className="pill-zone blue-zone fade-in-slow"
                 onClick={() => onChoice('corporate')}
-                aria-label="Blue Pill - Corporate"
-              />
+                aria-label="Blue Pill"
+              >
+                <span className="pill-label blue-label">Blue Pill</span>
+              </button>
             </>
           )}
         </div>
@@ -72,7 +76,7 @@ const IntroScreen = ({ onChoice }) => {
           overflow: hidden;
         }
 
-        /* ── Text area — sits at top, never overlaps the image ── */
+        /* ── Typewriter text ── */
         .dialogue-box {
           padding: 3vh 20px 1vh;
           text-align: center;
@@ -84,9 +88,23 @@ const IntroScreen = ({ onChoice }) => {
           letter-spacing: 2px;
           margin: 0;
           color: #fff;
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 2px solid #fff;
+          animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
         }
 
-        /* ── Morpheus image section — fills remaining space below text ── */
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: #fff; }
+        }
+
+        /* ── Morpheus ── */
         .morpheus-section {
           flex: 1;
           display: flex;
@@ -110,43 +128,48 @@ const IntroScreen = ({ onChoice }) => {
           object-fit: contain;
         }
 
-        /* ── Clickable pill zones — invisible, placed on his actual hands ── */
+        /* ── Pill clickable zones — completely invisible ── */
         .pill-zone {
           position: absolute;
           background: transparent;
-          border: 2px solid transparent;
+          border: none;
+          outline: none;
           border-radius: 50%;
           cursor: pointer;
-          width: 70px;
-          height: 70px;
-          transition: border-color 0.3s, box-shadow 0.3s;
+          width: 80px;
+          height: 50px;
         }
 
-        .pill-zone:hover {
-          border-color: rgba(255,255,255,0.5);
-        }
-
-        /* Position over the red pill in his right hand (screen left) */
-        .red-pill-zone {
-          bottom: 22%;
-          left: 22%;
+        /* Red pill — left hand */
+        .red-zone {
+          bottom: 24%;
+          left: 24%;
           transform: translate(-50%, 0);
         }
-        .red-pill-zone:hover {
-          box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
-          border-color: rgba(255, 50, 50, 0.7);
-        }
 
-        /* Position over the blue pill in his left hand (screen right) */
-        .blue-pill-zone {
-          bottom: 22%;
-          right: 22%;
+        /* Blue pill — right hand */
+        .blue-zone {
+          bottom: 24%;
+          right: 24%;
           transform: translate(50%, 0);
         }
-        .blue-pill-zone:hover {
-          box-shadow: 0 0 25px rgba(0, 100, 255, 0.6);
-          border-color: rgba(50, 130, 255, 0.7);
+
+        /* ── Labels ── */
+        .pill-label {
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 0.9rem;
+          font-weight: bold;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          white-space: nowrap;
+          pointer-events: none;
         }
+
+        .red-label { color: #ef4444; }
+        .blue-label { color: #3b82f6; }
 
         /* ── Animations ── */
         .fade-in-slow {
@@ -161,7 +184,8 @@ const IntroScreen = ({ onChoice }) => {
         /* ── Mobile ── */
         @media (max-width: 768px) {
           .dialogue-text { font-size: 1rem; }
-          .pill-zone { width: 50px; height: 50px; }
+          .pill-zone { width: 50px; height: 40px; }
+          .pill-label { font-size: 0.7rem; }
         }
       `}</style>
     </div>
