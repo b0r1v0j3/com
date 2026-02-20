@@ -4,6 +4,7 @@ const IntroScreen = ({ onChoice }) => {
   const [showPills, setShowPills] = useState(false);
   const [dialogue, setDialogue] = useState("");
 
+
   // Cinematic sequence
   useEffect(() => {
     let timeout1, timeout2;
@@ -239,14 +240,14 @@ const IntroScreen = ({ onChoice }) => {
         }
 
         .red-pill-zone {
-          bottom: 27%; 
-          left: 41%;
+          bottom: 35%; 
+          left: 31%;
           transform: translate(-50%, 50%);
         }
         
         .blue-pill-zone {
-          bottom: 27%; 
-          right: 41%;
+          bottom: 33%; 
+          right: 25%;
           transform: translate(50%, 50%);
         }
 
