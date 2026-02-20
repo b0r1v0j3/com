@@ -2,182 +2,101 @@ import { useState, useEffect } from 'react';
 
 const IntroScreen = ({ onChoice }) => {
   const [showPills, setShowPills] = useState(false);
-  const [dialogue, setDialogue] = useState("This is your last chance.");
+  const [dialogue, setDialogue] = useState("");
 
+  // Clean typewriter sequence
   useEffect(() => {
-    const t1 = setTimeout(() => {
-      setDialogue("After this, there is no turning back.");
-    }, 2500);
+    let timeout1, timeout2;
 
-    const t2 = setTimeout(() => {
+    // Start first line
+    timeout1 = setTimeout(() => {
+      setDialogue("After this, there is no turning back.");
+    }, 1000);
+
+    // Start second line and show pills
+    timeout2 = setTimeout(() => {
       setDialogue("You take the red pill... or the blue pill.");
       setShowPills(true);
-    }, 5500);
+    }, 4500);
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
     };
   }, []);
 
   return (
-    <div className="dark-intro-container">
+    <div className="bg-black w-screen h-screen flex flex-col items-center justify-between text-white font-mono fixed inset-0 z-50 overflow-hidden">
 
-      {/* Typewriter text at the top */}
-      <div className="dialogue-box">
-        <p key={dialogue} className="dialogue-text">{dialogue}</p>
+      {/* ── Top Text Area ── */}
+      <div className="w-full flex justify-center py-8 h-24">
+        {dialogue && (
+          <p
+            key={dialogue}
+            className="text-xl md:text-2xl tracking-[0.2em] uppercase typing-animation"
+          >
+            {dialogue}
+          </p>
+        )}
       </div>
 
-      {/* Morpheus image with clickable pill zones */}
-      <div className="morpheus-section">
-        <div className="morpheus-wrapper">
-          <img
-            src="/morpheus.png"
-            alt="Morpheus offering pills"
-            className="morpheus-img"
-          />
+      {/* ── Center Image ── */}
+      <div className="flex-1 w-full flex items-center justify-center relative max-h-[80vh]">
+        <img
+          src="/morpheus.jpg"
+          alt="Morpheus"
+          className="max-w-full max-h-full object-contain block opacity-0 animate-fade-in"
+        />
 
-          {/* Invisible clickable zones on the pills */}
-          {showPills && (
-            <>
-              <button
-                className="pill-zone red-zone fade-in-slow"
-                onClick={() => onChoice('matrix')}
-                aria-label="Red Pill"
-              />
-              <button
-                className="pill-zone blue-zone fade-in-slow"
-                onClick={() => onChoice('corporate')}
-                aria-label="Blue Pill"
-              />
-            </>
-          )}
-        </div>
+        {/* Clickable pill zones on the hands (only active when text is done) */}
+        {showPills && (
+          <>
+            {/* Red pill (Left hand on screen) */}
+            <button
+              onClick={() => onChoice('matrix')}
+              className="absolute w-20 h-20 rounded-full cursor-pointer bg-transparent border-none outline-none focus:ring-4 focus:ring-red-500/50"
+              style={{ bottom: '22%', left: '26%', transform: 'translate(-50%, 50%)' }}
+              aria-label="Enter Matrix (Red Pill)"
+              title="Enter The Matrix"
+            />
+            {/* Blue pill (Right hand on screen) */}
+            <button
+              onClick={() => onChoice('corporate')}
+              className="absolute w-20 h-20 rounded-full cursor-pointer bg-transparent border-none outline-none focus:ring-4 focus:ring-blue-500/50"
+              style={{ bottom: '22%', right: '23%', transform: 'translate(50%, 50%)' }}
+              aria-label="Enter Corporate (Blue Pill)"
+              title="Enter Corporate View"
+            />
+          </>
+        )}
       </div>
 
       <style>{`
-        .dark-intro-container {
-          height: 100vh;
-          width: 100vw;
-          background-color: #000;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          color: #fff;
-          font-family: 'Courier New', monospace;
-          position: fixed;
-          top: 0;
-          left: 0;
-          z-index: 1000;
-          overflow: hidden;
-        }
-
-        /* ── Typewriter text ── */
-        .dialogue-box {
-          padding: 3vh 20px 1vh;
-          text-align: center;
-          flex-shrink: 0;
-        }
-
-        .dialogue-text {
-          font-size: 1.4rem;
-          letter-spacing: 2px;
-          margin: 0;
-          color: #fff;
-          display: inline-block;
+        .typing-animation {
           overflow: hidden;
           white-space: nowrap;
-          border-right: 2px solid #fff;
-          animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+          border-right: 2px solid white;
+          width: fit-content;
+          animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
         @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
+          from { width: 0; }
+          to { width: 100%; }
         }
+
         @keyframes blink-caret {
-          from, to { border-color: transparent }
-          50% { border-color: #fff; }
+          from, to { border-color: transparent; }
+          50% { border-color: white; }
         }
 
-        /* ── Morpheus ── */
-        .morpheus-section {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 0;
-          width: 100%;
+        .animate-fade-in {
+          animation: simpleFade 1.5s ease-out forwards;
         }
 
-        .morpheus-wrapper {
-          position: relative;
-          display: inline-block;
-          max-height: 100%;
-          max-width: 100%;
-          animation: emergeFromMists 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes emergeFromMists {
-          0% {
-            opacity: 0;
-            filter: blur(20px) brightness(0.5);
-            transform: scale(1.05);
-          }
-          100% {
-            opacity: 1;
-            filter: blur(0px) brightness(1);
-            transform: scale(1);
-          }
-        }
-
-        .morpheus-img {
-          display: block;
-          max-height: 88vh;
-          max-width: 100%;
-          object-fit: contain;
-        }
-
-        /* ── Pill clickable zones — completely invisible ── */
-        .pill-zone {
-          position: absolute;
-          background: transparent;
-          border: none;
-          outline: none;
-          border-radius: 50%;
-          cursor: pointer;
-          width: 80px;
-          height: 50px;
-        }
-
-        /* Red pill — left hand */
-        .red-zone {
-          bottom: 24%;
-          left: 24%;
-          transform: translate(-50%, 0);
-        }
-
-        /* Blue pill — right hand */
-        .blue-zone {
-          bottom: 24%;
-          right: 24%;
-          transform: translate(50%, 0);
-        }
-
-        /* ── Animations ── */
-        .fade-in-slow {
-          opacity: 0;
-          animation: fadeIn 1.5s ease-in forwards;
-        }
-
-        @keyframes fadeIn {
+        @keyframes simpleFade {
+          from { opacity: 0; }
           to { opacity: 1; }
-        }
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-          .dialogue-text { font-size: 1rem; }
-          .pill-zone { width: 50px; height: 40px; }
         }
       `}</style>
     </div>
