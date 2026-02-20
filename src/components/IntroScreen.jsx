@@ -51,7 +51,7 @@ const IntroScreen = ({ onChoice }) => {
           <div className="morpheus-backlight"></div>
 
           <img
-            src="/morpheus-clear.png"
+            src="/morpheus.png"
             alt="Morpheus"
             className="morpheus-img"
           />
@@ -187,7 +187,8 @@ const IntroScreen = ({ onChoice }) => {
           display: inline-block;
           max-height: 80vh;
           max-width: 100vw;
-          animation: emergeFromFog 5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+          z-index: 50;
+          animation: emergeFromShadow 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
         .morpheus-backlight {
@@ -210,15 +211,15 @@ const IntroScreen = ({ onChoice }) => {
           filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
         }
 
-        @keyframes emergeFromFog {
+        @keyframes emergeFromShadow {
           0% {
             opacity: 0;
-            filter: blur(15px) brightness(0.2);
-            transform: scale(1.1) translateY(20px);
+            filter: brightness(0.2);
+            transform: scale(1.05) translateY(20px);
           }
           100% {
             opacity: 1;
-            filter: blur(0px) brightness(1);
+            filter: brightness(1);
             transform: scale(1) translateY(0);
           }
         }
