@@ -98,7 +98,7 @@ const IntroScreen = ({ onChoice }) => {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          z-index: 1;
+          z-index: 0;
           overflow: hidden;
         }
 
