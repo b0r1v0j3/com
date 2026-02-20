@@ -253,10 +253,8 @@ function CorporateApp() {
       {/* ── Footer ── */}
       <footer className="bg-white border-t-4 border-double border-black py-6 mt-16">
         <div className="max-w-6xl mx-auto px-4 md:px-8 flex justify-center text-center">
-          <p className="text-[9px] font-sans tracking-[0.2em] uppercase text-black font-bold flex flex-col items-center gap-1.5 md:flex-row md:gap-3">
-            <span>© 1992 [b0r1v0j3]</span>
-            <span className="hidden md:inline-block">/</span>
-            <span>PRINTED IN GLOBAL OPERATIONS.</span>
+          <p className="text-[9px] font-sans tracking-[0.2em] uppercase text-black font-bold">
+            © 1992 Borivoje Cvetković. Printed in Global Operations.
           </p>
         </div>
       </footer>
