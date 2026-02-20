@@ -60,6 +60,12 @@ function CorporateApp() {
     const d = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     setCurrentDate(d.toLocaleDateString('en-US', options).toUpperCase());
+
+    // Add corporate theme class to HTML for global overrides (like scrollbar)
+    document.documentElement.classList.add('theme-corporate');
+    return () => {
+      document.documentElement.classList.remove('theme-corporate');
+    };
   }, []);
 
   return (
@@ -207,17 +213,19 @@ function CorporateApp() {
               For consultation, prospective partnerships, or to request a full technical portfolio.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center m-auto">
+            <div className="flex flex-wrap gap-8 justify-center m-auto">
               {ObjectLinks.map(link => (
                 <a
                   key={link.id}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-white text-black border border-black hover:bg-black hover:text-white transition-all duration-300 rounded-full"
+                  className="flex items-center justify-center text-black hover:text-gray-500 hover:scale-110 transition-all duration-300 transform"
                   title={link.name}
                 >
-                  {Icons[link.icon] || <span className="font-sans font-bold uppercase text-xs">{link.name.charAt(0)}</span>}
+                  <div className="scale-[1.3] flex items-center justify-center">
+                    {Icons[link.icon] || <span className="font-sans font-bold uppercase text-xs">{link.name.charAt(0)}</span>}
+                  </div>
                 </a>
               ))}
             </div>

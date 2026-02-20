@@ -15,3 +15,18 @@
   font-family: var(--font-sans);
   min-height: 100vh;
 }
+
+/* Override Global Matrix Scrollbar */
+html.theme-corporate ::-webkit-scrollbar {
+  width: 12px;
+  background: #ffffff;
+}
+
+html.theme-corporate ::-webkit-scrollbar-thumb {
+  background: #000000;
+  border: 2px solid #ffffff;
+}
+
+html.theme-corporate ::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
