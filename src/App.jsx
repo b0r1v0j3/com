@@ -43,14 +43,14 @@ function App() {
           <div className="content-layer fade-in-slow">
 
 
-            <section className="skills-section">
-              <h2 className="section-title">KNOWLEDGE_BASE // SKILLS</h2>
-              <SkillsDownload />
-            </section>
-
             <section className="projects-section">
               <h2 className="section-title">SYSTEM_MODULES // PROJECTS</h2>
               <MatrixProjectGrid />
+            </section>
+
+            <section className="skills-section">
+              <h2 className="section-title">KNOWLEDGE_BASE // SKILLS</h2>
+              <SkillsDownload />
             </section>
 
             <section className="links-section">
