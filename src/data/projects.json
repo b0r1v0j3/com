@@ -13,7 +13,7 @@
   {
     "id": "2",
     "title": "podovi",
-    "description": "An e-commerce catalogue and advisory platform for premium flooring solutions. Features an extensive product library of laminates, vinyls, and engineered surfaces from leading European manufacturers.",
+    "description": "An e-commerce catalogue and advisory platform for premium flooring solutions. Features an extensive product library of engineered surfaces from leading European manufacturers.",
     "tech": [
       "Next.js",
       "Tailwind"
