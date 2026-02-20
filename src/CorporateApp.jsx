@@ -173,14 +173,14 @@ function CorporateApp() {
             An index of recent architectural implementations and corporate software solutions.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
+          <div className="grid md:grid-cols-2 gap-y-16">
             {projects.map((project, index) => (
               <a
                 key={project.id}
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group block relative reveal-on-scroll ${index % 2 === 0 ? 'md:border-r md:border-black/20 md:pr-12 delay-100' : 'delay-200'} `}
+                className={`group block relative reveal-on-scroll ${index % 2 === 0 ? 'md:border-r md:border-black/20 md:pr-8 delay-100' : 'md:pl-8 delay-200'} `}
               >
                 <article className="flex flex-col h-full transform transition-transform duration-500 hover:-translate-y-1">
                   <div className="flex justify-between items-start mb-4">
@@ -196,11 +196,11 @@ function CorporateApp() {
                   <div className="bg-white overflow-hidden mb-5 border border-black relative">
                     <div className="w-full h-48 md:h-56 overflow-hidden relative grayscale contrast-125 sepia-[.1] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700">
                       {project.title === 'podovi' ? (
-                        <div className="absolute inset-0 bg-[#ebebeb] flex items-center justify-center p-0.5">
+                        <div className="absolute inset-0">
                           <img
                             src={project.customImage}
                             alt={project.title}
-                            className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:scale-105 duration-700 shadow-sm"
+                            className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity transform group-hover:scale-105 duration-700"
                             loading="lazy"
                           />
                         </div>
