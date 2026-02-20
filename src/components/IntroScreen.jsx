@@ -98,12 +98,12 @@ const IntroScreen = ({ onChoice }) => {
           display: inline-block;
           overflow: hidden;
           white-space: nowrap;
-          border-right: 3px solid #00FF41;
-          animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+          color: #ffffff;
+          animation: typing 2.5s steps(40, end);
         }
 
         .shadow-glow {
-          text-shadow: 0 0 10px rgba(0,255,65,0.8);
+          /* text-shadow: 0 0 10px rgba(0,255,65,0.8); removed */
         }
 
         .morpheus-image-container {
