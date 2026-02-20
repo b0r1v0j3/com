@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 const Icons = {
   twitter: (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="opacity-90 hover:opacity-100 transition-opacity">
-      <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.959-.576 1.7-1.485 2.047-2.574-.9.536-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z" />
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   ),
   linkedin: (
@@ -37,7 +37,7 @@ const Icons = {
   ),
   phone: (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="opacity-90 hover:opacity-100 transition-opacity">
-      <path d="M20 22.621l-3.521-6.795c-.007.004-1.974.97-2.28.316l-1.548-1.548c-.146-.146-.226-.341-.225-.548.001-.205.084-.4.232-.544l2.846-2.846c-.053-.086-.112-.17-.184-.242L5.807 1.056C5.59 .84 5.25.753 4.956.843c-3.155.955-4.956 3.655-4.956 6.847 0 7.828 7.373 15.201 15.201 15.201 2.373 0 5.564-1.267 6.847-4.956.126-.356-.002-.748-.283-.984l-1.765-1.33zm-4.8-14.868l1.647 1.648c.199.199.521.199.721 0 .199-.199.199-.521 0-.721l-1.648-1.647zm-1.62-.638l2.95 2.951c.199.199.521.199.721 0 .199-.199.199-.522 0-.721l-2.951-2.95c-.198-.198-.521-.198-.72 0-.2.198-.2.52 0 .72zm-1.028-.895l1.096 1.096c.199.199.521.199.72 0 .199-.199.199-.521 0-.721l-1.096-1.096c-.2-.198-.521-.198-.72 0-.199.199-.199.521 0 .721z" />
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
   ),
   mail: (
@@ -82,17 +82,26 @@ function CorporateApp() {
       <header className="bg-white text-black border-b-[4px] border-double border-black shadow-none sticky top-0 z-50 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-8 flex flex-col items-center justify-center relative">
 
-          <h1 className="font-serif text-4xl md:text-6xl font-black tracking-tight text-center leading-none mb-2">
+          <h1 className="font-serif text-4xl md:text-7xl font-black tracking-tighter text-center leading-none mb-3 transform hover:scale-[1.01] transition-transform duration-500">
             BORIVOJE CVETKOVIĆ
           </h1>
-          <h2 className="text-black text-[10px] md:text-xs font-sans tracking-[0.2em] md:tracking-[0.3em] font-semibold uppercase italic">
+          <h2 className="text-black text-[10px] md:text-xs font-sans tracking-[0.25em] md:tracking-[0.4em] font-semibold uppercase italic opacity-90">
             Capital Engineering & Architecture
           </h2>
 
-          <nav className="hidden md:flex gap-8 text-[11px] font-sans tracking-widest uppercase font-bold text-black mt-8">
-            <a href="#firm" className="hover:bg-black hover:text-white px-2 py-1 transition-colors">The Firm</a>
-            <a href="#portfolio" className="hover:bg-black hover:text-white px-2 py-1 transition-colors">Portfolio</a>
-            <a href="#contact" className="hover:bg-black hover:text-white px-2 py-1 transition-colors">Contact</a>
+          <nav className="hidden md:flex gap-10 text-[11px] font-sans tracking-[0.15em] uppercase font-bold text-black mt-10">
+            <a href="#firm" className="relative group overflow-hidden px-1">
+              The Firm
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+            </a>
+            <a href="#portfolio" className="relative group overflow-hidden px-1">
+              Portfolio
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+            </a>
+            <a href="#contact" className="relative group overflow-hidden px-1">
+              Contact
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+            </a>
           </nav>
         </div>
       </header>
