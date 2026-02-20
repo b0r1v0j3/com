@@ -149,16 +149,16 @@ const IntroScreen = ({ onChoice }) => {
 
         /* Responsive positioning based on typical image fit */
         .red-pill-zone {
-          left: 30%;
-          top: 70%;
+          left: 23%;
+          top: 68%;
           width: 80px;
           height: 80px;
           transform: translate(-50%, -50%);
         }
 
         .blue-pill-zone {
-          left: 70%;
-          top: 70%;
+          left: 77%;
+          top: 68%;
           width: 80px;
           height: 80px;
           transform: translate(-50%, -50%);
