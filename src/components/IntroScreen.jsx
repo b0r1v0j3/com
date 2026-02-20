@@ -23,31 +23,37 @@ const IntroScreen = ({ onChoice }) => {
   return (
     <div className="dark-intro-container">
 
-      {/* Text at the very top */}
+      {/* Text at the very top, separate from image */}
       <div className="dialogue-box">
         <p key={dialogue} className="dialogue-text">{dialogue}</p>
       </div>
 
-      {/* Morpheus image in the middle, pushed down below text */}
+      {/* Morpheus image pushed below text, with clickable pill zones */}
       <div className="morpheus-section">
-        <img
-          src="/morpheus.png"
-          alt="Morpheus offering pills"
-          className="morpheus-img"
-        />
-      </div>
+        <div className="morpheus-wrapper">
+          <img
+            src="/morpheus.png"
+            alt="Morpheus offering pills"
+            className="morpheus-img"
+          />
 
-      {/* Visible pill buttons at the bottom */}
-      {showPills && (
-        <div className="pills-row fade-in-slow">
-          <button className="pill-btn red-pill" onClick={() => onChoice('matrix')}>
-            Red Pill — The Matrix
-          </button>
-          <button className="pill-btn blue-pill" onClick={() => onChoice('corporate')}>
-            Blue Pill — Corporate
-          </button>
+          {/* Clickable zones directly on the pills in his hands */}
+          {showPills && (
+            <>
+              <button
+                className="pill-zone red-pill-zone fade-in-slow"
+                onClick={() => onChoice('matrix')}
+                aria-label="Red Pill - The Matrix"
+              />
+              <button
+                className="pill-zone blue-pill-zone fade-in-slow"
+                onClick={() => onChoice('corporate')}
+                aria-label="Blue Pill - Corporate"
+              />
+            </>
+          )}
         </div>
-      )}
+      </div>
 
       <style>{`
         .dark-intro-container {
@@ -66,9 +72,9 @@ const IntroScreen = ({ onChoice }) => {
           overflow: hidden;
         }
 
-        /* ── Text area ── */
+        /* ── Text area — sits at top, never overlaps the image ── */
         .dialogue-box {
-          padding-top: 3vh;
+          padding: 3vh 20px 1vh;
           text-align: center;
           flex-shrink: 0;
         }
@@ -80,7 +86,7 @@ const IntroScreen = ({ onChoice }) => {
           color: #fff;
         }
 
-        /* ── Morpheus image ── */
+        /* ── Morpheus image section — fills remaining space below text ── */
         .morpheus-section {
           flex: 1;
           display: flex;
@@ -88,55 +94,58 @@ const IntroScreen = ({ onChoice }) => {
           align-items: center;
           min-height: 0;
           width: 100%;
-          padding: 1vh 0;
+        }
+
+        .morpheus-wrapper {
+          position: relative;
+          display: inline-block;
+          max-height: 100%;
+          max-width: 100%;
         }
 
         .morpheus-img {
-          max-height: 100%;
+          display: block;
+          max-height: 88vh;
           max-width: 100%;
           object-fit: contain;
         }
 
-        /* ── Pill buttons ── */
-        .pills-row {
-          display: flex;
-          gap: 40px;
-          padding-bottom: 4vh;
-          flex-shrink: 0;
-        }
-
-        .pill-btn {
-          padding: 14px 32px;
-          border: none;
-          border-radius: 30px;
-          font-family: 'Courier New', monospace;
-          font-size: 1rem;
-          font-weight: bold;
-          letter-spacing: 1px;
+        /* ── Clickable pill zones — invisible, placed on his actual hands ── */
+        .pill-zone {
+          position: absolute;
+          background: transparent;
+          border: 2px solid transparent;
+          border-radius: 50%;
           cursor: pointer;
-          transition: transform 0.2s, box-shadow 0.2s;
+          width: 70px;
+          height: 70px;
+          transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .pill-btn:hover {
-          transform: scale(1.08);
+        .pill-zone:hover {
+          border-color: rgba(255,255,255,0.5);
         }
 
-        .red-pill {
-          background: linear-gradient(135deg, #b91c1c, #ef4444);
-          color: #fff;
-          box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+        /* Position over the red pill in his right hand (screen left) */
+        .red-pill-zone {
+          bottom: 22%;
+          left: 22%;
+          transform: translate(-50%, 0);
         }
-        .red-pill:hover {
-          box-shadow: 0 0 35px rgba(239, 68, 68, 0.7);
+        .red-pill-zone:hover {
+          box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+          border-color: rgba(255, 50, 50, 0.7);
         }
 
-        .blue-pill {
-          background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-          color: #fff;
-          box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        /* Position over the blue pill in his left hand (screen right) */
+        .blue-pill-zone {
+          bottom: 22%;
+          right: 22%;
+          transform: translate(50%, 0);
         }
-        .blue-pill:hover {
-          box-shadow: 0 0 35px rgba(59, 130, 246, 0.7);
+        .blue-pill-zone:hover {
+          box-shadow: 0 0 25px rgba(0, 100, 255, 0.6);
+          border-color: rgba(50, 130, 255, 0.7);
         }
 
         /* ── Animations ── */
@@ -152,8 +161,7 @@ const IntroScreen = ({ onChoice }) => {
         /* ── Mobile ── */
         @media (max-width: 768px) {
           .dialogue-text { font-size: 1rem; }
-          .pills-row { gap: 16px; flex-direction: column; align-items: center; }
-          .pill-btn { font-size: 0.85rem; padding: 12px 24px; }
+          .pill-zone { width: 50px; height: 50px; }
         }
       `}</style>
     </div>
