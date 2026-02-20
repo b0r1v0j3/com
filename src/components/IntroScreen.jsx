@@ -26,23 +26,15 @@ const IntroScreen = ({ onChoice }) => {
 
       {/* Dialogue box positioned at the top */}
       <div className="dialogue-box fade-in">
-        <p className="typewriter-text shadow-glow">{dialogue}</p>
+        <p key={dialogue} className="typewriter-text shadow-glow">{dialogue}</p>
       </div>
 
       {/* Main image container */}
       <div className="morpheus-image-container fade-in-cinematic">
         <img
-          src="/assets/morpheus_real.jpg"
+          src="/morpheus.jpg"
           alt="Morpheus offering pills"
           className="morpheus-bg"
-          onError={(e) => {
-            // Fallbacks in case the copy command didn't grab the file instantly
-            if (e.target.src.includes('morpheus_real.jpg')) {
-              e.target.src = '/morpheus.jpg';
-            } else {
-              e.target.style.display = 'none';
-            }
-          }}
         />
 
         {/* Interactive overlays positioned exactly over his hands */}
