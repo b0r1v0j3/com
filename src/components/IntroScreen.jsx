@@ -239,14 +239,14 @@ const IntroScreen = ({ onChoice }) => {
         }
 
         .red-pill-zone {
-          bottom: 22%;
-          left: 26%;
+          bottom: 12%; 
+          left: 28%;
           transform: translate(-50%, 50%);
         }
         
         .blue-pill-zone {
-          bottom: 22%;
-          right: 23%;
+          bottom: 12%; 
+          right: 25%;
           transform: translate(50%, 50%);
         }
 
