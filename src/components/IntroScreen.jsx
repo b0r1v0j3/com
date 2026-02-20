@@ -10,7 +10,7 @@ const IntroScreen = ({ onChoice }) => {
     }, 2500);
 
     const t2 = setTimeout(() => {
-      setDialogue("You take the blue pill... or the red pill.");
+      setDialogue("You take the red pill... or the blue pill.");
       setShowPills(true);
     }, 5500);
 
@@ -37,23 +37,19 @@ const IntroScreen = ({ onChoice }) => {
             className="morpheus-img"
           />
 
-          {/* Invisible clickable zones on the pills + labels */}
+          {/* Invisible clickable zones on the pills */}
           {showPills && (
             <>
               <button
                 className="pill-zone red-zone fade-in-slow"
                 onClick={() => onChoice('matrix')}
                 aria-label="Red Pill"
-              >
-                <span className="pill-label red-label">Red Pill</span>
-              </button>
+              />
               <button
                 className="pill-zone blue-zone fade-in-slow"
                 onClick={() => onChoice('corporate')}
                 aria-label="Blue Pill"
-              >
-                <span className="pill-label blue-label">Blue Pill</span>
-              </button>
+              />
             </>
           )}
         </div>
@@ -153,23 +149,6 @@ const IntroScreen = ({ onChoice }) => {
           right: 24%;
           transform: translate(50%, 0);
         }
-
-        /* ── Labels ── */
-        .pill-label {
-          position: absolute;
-          bottom: -30px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 0.9rem;
-          font-weight: bold;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          white-space: nowrap;
-          pointer-events: none;
-        }
-
-        .red-label { color: #ef4444; }
-        .blue-label { color: #3b82f6; }
 
         /* ── Animations ── */
         .fade-in-slow {
