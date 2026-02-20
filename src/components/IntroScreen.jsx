@@ -115,6 +115,20 @@ const IntroScreen = ({ onChoice }) => {
           display: inline-block;
           max-height: 100%;
           max-width: 100%;
+          animation: emergeFromMists 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes emergeFromMists {
+          0% {
+            opacity: 0;
+            filter: blur(20px) brightness(0.5);
+            transform: scale(1.05);
+          }
+          100% {
+            opacity: 1;
+            filter: blur(0px) brightness(1);
+            transform: scale(1);
+          }
         }
 
         .morpheus-img {
@@ -164,7 +178,6 @@ const IntroScreen = ({ onChoice }) => {
         @media (max-width: 768px) {
           .dialogue-text { font-size: 1rem; }
           .pill-zone { width: 50px; height: 40px; }
-          .pill-label { font-size: 0.7rem; }
         }
       `}</style>
     </div>
