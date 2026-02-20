@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-corporate-bg: #f8fafc;
+  --color-corporate-text: #0f172a;
+  --color-corporate-primary: #2563eb;
+  --color-corporate-secondary: #64748b;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* Ensure corporate styles don't leak into matrix styles */
+.theme-corporate {
+  background-color: var(--color-corporate-bg);
+  color: var(--color-corporate-text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}

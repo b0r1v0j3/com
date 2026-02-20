@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import IntroScreen from './components/IntroScreen';
+import CorporateApp from './CorporateApp';
 import MatrixRain from './components/MatrixRain';
 import Typewriter from './components/Typewriter';
 import MatrixProjectGrid from './components/MatrixProjectGrid';
@@ -6,7 +8,8 @@ import BackgroundMusic from './components/BackgroundMusic';
 import SkillsDownload from './components/SkillsDownload';
 import links from './data/links.json';
 
-function App() {
+// Extract the original Matrix App into a sub-component for cleaner routing
+function MatrixApp() {
   const [introComplete, setIntroComplete] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
@@ -41,8 +44,6 @@ function App() {
 
         {showContent && (
           <div className="content-layer fade-in-slow">
-
-
             <section className="projects-section">
               <h2 className="section-title">SYSTEM_MODULES // PROJECTS</h2>
               <MatrixProjectGrid />
@@ -57,7 +58,7 @@ function App() {
               <h2 className="section-title">COMM_LINKS // SOCIALS</h2>
               <div className="links-grid">
                 {links.map(link => (
-                  <a key={link.id} href={link.url} target="_blank" className="matrix-link">
+                  <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className="matrix-link">
                     [{link.name.toUpperCase()}]
                   </a>
                 ))}
@@ -118,8 +119,6 @@ function App() {
           box-shadow: 0 0 20px var(--matrix-green);
         }
         
-
-        
         .section-title {
           font-size: 1.5rem;
           border-bottom: 2px solid var(--matrix-green-dim);
@@ -155,13 +154,8 @@ function App() {
           padding-top: 24px;
         }
         
-        /* Animation Classes */
-        .fade-in {
-          animation: fadeIn 1s ease-in;
-        }
-        .fade-in-slow {
-          animation: fadeIn 2s ease-in;
-        }
+        .fade-in { animation: fadeIn 1s ease-in; }
+        .fade-in-slow { animation: fadeIn 2s ease-in; }
         
         @keyframes fadeIn {
           from { opacity: 0; }
@@ -169,7 +163,22 @@ function App() {
         }
       `}</style>
     </>
-  )
+  );
 }
 
-export default App
+// Main App Router
+function App() {
+  const [themeChoice, setThemeChoice] = useState(null); // 'matrix' | 'corporate' | null
+
+  if (!themeChoice) {
+    return <IntroScreen onChoice={(choice) => setThemeChoice(choice)} />;
+  }
+
+  if (themeChoice === 'corporate') {
+    return <CorporateApp />;
+  }
+
+  return <MatrixApp />;
+}
+
+export default App;
