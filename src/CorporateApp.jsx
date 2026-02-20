@@ -50,7 +50,7 @@ const Icons = {
 
 function CorporateApp() {
     return (
-        <div className="theme-corporate font-sans min-h-screen bg-[#050505] selection:bg-white/20 text-white relative overflow-hidden">
+        <div className="theme-corporate font-sans min-h-screen bg-[#000000] selection:bg-white/20 text-white relative overflow-hidden" style={{ backgroundColor: '#000000' }}>
 
             {/* ── Ambient Premium Glows ── */}
             <div className="fixed top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-900/20 blur-[120px] pointer-events-none" />
@@ -69,7 +69,7 @@ function CorporateApp() {
                                         B
                                     </div>
                                 </div>
-                                <span>B. Cvetković</span>
+                                <span>Borivoje Cvetković</span>
                             </div>
                             <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
                                 <a href="#about" className="hover:text-white transition-colors">Vision</a>
@@ -130,21 +130,28 @@ function CorporateApp() {
                                         {/* Hover Glow */}
                                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-transparent to-indigo-500/0 group-hover:from-blue-500/10 group-hover:to-indigo-500/10 transition-colors duration-500"></div>
 
-                                        <div className="relative h-72 w-full rounded-3xl bg-[#0a0a0a] overflow-hidden mb-8 border border-white/5">
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                                                loading="lazy"
-                                            />
+                                        <div className="relative h-72 w-full rounded-3xl bg-[#0a0a0a] overflow-hidden mb-8 border border-white/5 group">
+                                            {/* Iframe to load the actual website instead of the placeholder image */}
+                                            <div className="absolute w-[400%] h-[400%] top-0 left-0" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
+                                                <iframe
+                                                    src={project.link}
+                                                    title={project.title}
+                                                    className="w-full h-full border-0 pointer-events-none"
+                                                    loading="lazy"
+                                                />
+                                            </div>
+
                                             {/* Image overlay gradient to blend bottom edge */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent z-10"></div>
+
+                                            {/* Dark overlay on hover */}
+                                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20"></div>
                                         </div>
 
-                                        <div className="px-4 pb-4 flex flex-col flex-1 relative z-10">
+                                        <div className="px-4 pb-4 flex flex-col flex-1 relative z-30">
                                             <div className="flex justify-between items-start mb-4">
-                                                <h3 className="text-2xl font-bold text-white capitalize tracking-tight group-hover:text-blue-400 transition-colors">
-                                                    {project.title.replace('_', ' ')}
+                                                <h3 className="text-2xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+                                                    {project.title === 'podovi' ? 'podovi' : project.title.replace('_', ' ')}
                                                 </h3>
                                                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 border border-white/10 group-hover:bg-white text-lg transition-colors group-hover:text-black">
                                                     ↗
