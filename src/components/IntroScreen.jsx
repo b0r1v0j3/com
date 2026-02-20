@@ -1,28 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const IntroScreen = ({ onChoice }) => {
-  const [showPills, setShowPills] = useState(false);
-  const [dialogue, setDialogue] = useState("");
+  const [showPills] = useState(true);
 
-
-  // Cinematic sequence
-  useEffect(() => {
-    let timeout1, timeout2;
-
-    timeout1 = setTimeout(() => {
-      setDialogue("After this, there is no turning back.");
-    }, 1500);
-
-    timeout2 = setTimeout(() => {
-      setDialogue("You take the red pill... or the blue pill.");
-      setShowPills(true);
-    }, 5500);
-
-    return () => {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
-    };
-  }, []);
 
   return (
     <div className="dark-intro-container">
@@ -32,17 +12,6 @@ const IntroScreen = ({ onChoice }) => {
         <div className="fog-layer mist-1"></div>
         <div className="fog-layer mist-2"></div>
         <div className="fog-layer mist-3"></div>
-      </div>
-
-      {/* ── Top Text Area ── */}
-      <div className="dialogue-wrapper">
-        <div className="dialogue-box">
-          {dialogue && (
-            <p key={dialogue} className="typewriter-text shadow-glowglow">
-              {dialogue}
-            </p>
-          )}
-        </div>
       </div>
 
       {/* ── Center Image ── */}

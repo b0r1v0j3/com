@@ -49,67 +49,66 @@ function formatTitle(title) {
 
 function CorporateApp() {
   return (
-    <div className="bg-[#FAF9F6] min-h-screen text-[#2B3A4A] font-serif selection:bg-[#B7955B] selection:text-white">
+    <div className="bg-white min-h-screen text-black font-serif selection:bg-black selection:text-white pb-24">
 
-      {/* ── Firm Header (Wall Street Style) ── */}
-      <header className="bg-[#0B1320] text-white border-b-[6px] border-[#B7955B] shadow-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-8 h-24 flex items-center justify-between">
+      {/* ── Firm Header (Editorial Style) ── */}
+      <header className="bg-white text-black border-b-[3px] border-black shadow-none sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 h-20 md:h-24 flex items-center justify-between">
           <div className="flex flex-col">
-            <h1 className="font-serif text-2xl tracking-widest uppercase font-bold">Borivoje Cvetković</h1>
-            <span className="text-[#B7955B] text-xs font-sans tracking-[0.2em] font-medium uppercase mt-1">Capital Engineering & Architecture</span>
+            <h1 className="font-serif text-2xl md:text-3xl font-bold tracking-tight">Borivoje Cvetković</h1>
+            <span className="text-gray-500 text-[10px] md:text-xs font-sans tracking-[0.1em] font-medium uppercase mt-1">Capital Engineering & Architecture</span>
           </div>
-          <nav className="hidden md:flex gap-10 text-sm font-sans tracking-widest uppercase font-semibold text-white/80">
-            <a href="#firm" className="hover:text-[#B7955B] transition-colors">The Firm</a>
-            <a href="#portfolio" className="hover:text-[#B7955B] transition-colors">Portfolio</a>
-            <a href="#contact" className="hover:text-[#B7955B] transition-colors">Contact</a>
+          <nav className="hidden md:flex gap-8 text-xs font-sans tracking-widest uppercase font-semibold text-black">
+            <a href="#firm" className="hover:underline underline-offset-4 transition-all">The Firm</a>
+            <a href="#portfolio" className="hover:underline underline-offset-4 transition-all">Portfolio</a>
+            <a href="#contact" className="hover:underline underline-offset-4 transition-all">Contact</a>
           </nav>
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-8 py-24">
+      <main className="max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-24">
 
         {/* ── Institution Hero ── */}
-        <section id="firm" className="py-16 md:py-24 border-b border-gray-300">
-          <div className="flex flex-col md:flex-row gap-16 items-start">
+        <section id="firm" className="py-12 md:py-16 border-b border-black mb-16">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
             <div className="flex-1">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#0B1320] leading-[1.2] mb-8 relative">
-                <span className="absolute -left-6 top-3 w-4 h-1 bg-[#B7955B]"></span>
-                Structuring Scalable Digital Assets.
+              <h2 className="text-4xl md:text-6xl font-serif font-bold text-black leading-tight mb-8">
+                Structuring Scalable<br className="hidden md:block" /> Digital Assets.
               </h2>
-              <p className="text-xl text-[#4A5D70] leading-relaxed mb-10 font-serif">
+              <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-10 font-serif max-w-2xl">
                 We design and engineer robust digital architecture for high-performing organizations. Specializing in highly secure, performant software systems that drive capital growth and operational efficiency.
               </p>
-              <a href="#portfolio" className="inline-flex items-center justify-center h-12 px-10 bg-[#0B1320] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#B7955B] transition-colors shadow-sm">
+              <a href="#portfolio" className="inline-flex items-center justify-center h-12 px-8 border border-black text-black bg-white hover:bg-black hover:text-white font-sans text-xs tracking-widest uppercase transition-colors">
                 View Holdings
               </a>
             </div>
 
             {/* Prestige Stats / Branding Box */}
-            <div className="hidden lg:flex flex-col w-72 bg-white border border-gray-200 shadow-sm p-8 shrink-0">
-              <div className="border-b border-gray-200 pb-4 mb-4">
-                <p className="text-xs font-sans text-gray-400 tracking-widest uppercase mb-1">Founded</p>
-                <p className="text-xl font-serif font-bold text-[#0B1320]">1992</p>
+            <div className="hidden lg:flex flex-col w-72 bg-white border-l border-r border-t border-b-[3px] border-black p-8 shrink-0">
+              <div className="border-b border-gray-300 pb-4 mb-4">
+                <p className="text-[10px] font-sans text-gray-500 tracking-widest uppercase mb-1 font-bold">Founded</p>
+                <p className="text-xl font-serif text-black">1992</p>
               </div>
-              <div className="border-b border-gray-200 pb-4 mb-4">
-                <p className="text-xs font-sans text-gray-400 tracking-widest uppercase mb-1">Focus</p>
-                <p className="text-xl font-serif font-bold text-[#0B1320]">Software Architecture</p>
+              <div className="border-b border-gray-300 pb-4 mb-4">
+                <p className="text-[10px] font-sans text-gray-500 tracking-widest uppercase mb-1 font-bold">Focus</p>
+                <p className="text-xl font-serif text-black">Software Architecture</p>
               </div>
               <div>
-                <p className="text-xs font-sans text-gray-400 tracking-widest uppercase mb-1">Location</p>
-                <p className="text-xl font-serif font-bold text-[#0B1320]">Global</p>
+                <p className="text-[10px] font-sans text-gray-500 tracking-widest uppercase mb-1 font-bold">Location</p>
+                <p className="text-xl font-serif text-black">Global</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* ── Structured Portfolio ── */}
-        <section id="portfolio" className="py-24">
-          <div className="flex justify-between items-end border-b-2 border-[#0B1320] pb-6 mb-12">
-            <h2 className="text-3xl font-serif font-bold text-[#0B1320] uppercase tracking-widest">Client Holdings & Projects</h2>
-            <span className="hidden md:inline-block font-sans text-sm tracking-widest text-[#B7955B] uppercase font-bold">Confidential & Public</span>
+        <section id="portfolio" className="py-12 md:py-16">
+          <div className="flex justify-between items-end border-b-4 border-black pb-4 mb-12 flex-wrap gap-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-black">Client Holdings & Projects</h2>
+            <span className="font-sans text-[10px] md:text-xs tracking-[0.15em] text-gray-500 uppercase font-bold">Confidential & Public</span>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {projects.map(project => (
               <a
                 key={project.id}
@@ -118,49 +117,46 @@ function CorporateApp() {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <article className="bg-white border border-gray-300 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full relative p-2">
-                  <div className="border border-gray-200 p-6 flex flex-col h-full">
-
-                    <div className="flex justify-between items-start mb-6">
-                      <div>
-                        <p className="font-sans text-xs tracking-widest uppercase text-[#B7955B] font-bold mb-2">Project Profile</p>
-                        <h3 className="text-2xl font-serif font-bold text-[#0B1320] group-hover:text-[#B7955B] transition-colors">
-                          {formatTitle(project.title)}
-                        </h3>
-                      </div>
-                      <div className="w-8 h-8 rounded-full border border-gray-300 flex justify-center items-center text-gray-400 group-hover:bg-[#0B1320] group-hover:text-white transition-colors">
-                        <span className="text-sm font-sans shrink-0">↗</span>
-                      </div>
+                <article className="bg-white border-t-2 border-l border-r border-b border-black hover:bg-gray-50 transition-colors duration-300 flex flex-col h-full p-6 md:p-8">
+                  <div className="flex justify-between items-start mb-6">
+                    <div>
+                      <p className="font-sans text-[10px] tracking-widest uppercase text-gray-500 font-bold mb-2">Project Profile</p>
+                      <h3 className="text-2xl font-serif font-bold text-black group-hover:underline underline-offset-4">
+                        {formatTitle(project.title)}
+                      </h3>
                     </div>
-
-                    {/* Screenshot presentation */}
-                    <div className="relative h-56 bg-gray-100 overflow-hidden mb-8 border border-gray-300 group-hover:border-[#0B1320]/20 transition-colors">
-                      <div className="absolute w-[400%] h-[400%] top-0 left-0" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
-                        <img
-                          src={`https://image.thum.io/get/width/800/crop/800/noanimate/${project.link}`}
-                          alt={project.title}
-                          className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 opacity-90 group-hover:opacity-100"
-                          loading="lazy"
-                          onError={(e) => {
-                            e.target.src = "https://placehold.co/800x600/e2e8f0/64748b?text=Generating+Report...";
-                          }}
-                        />
-                      </div>
+                    <div className="w-8 h-8 flex justify-center items-center text-black">
+                      <span className="text-lg font-serif">↗</span>
                     </div>
+                  </div>
 
-                    <p className="text-[#4A5D70] font-serif leading-relaxed mb-8 flex-1">
-                      {project.description}
-                    </p>
+                  {/* Screenshot presentation */}
+                  <div className="relative h-56 bg-white overflow-hidden mb-6 border border-gray-200 grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500">
+                    <div className="absolute w-[400%] h-[400%] top-0 left-0" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
+                      <img
+                        src={`https://image.thum.io/get/width/800/crop/800/noanimate/${project.link}`}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.src = "https://placehold.co/800x600/ffffff/000000?text=Generating+Report...";
+                        }}
+                      />
+                    </div>
+                  </div>
 
-                    <div className="border-t border-gray-200 pt-6">
-                      <p className="font-sans text-xs tracking-widest uppercase text-gray-400 font-bold mb-3">Technology Stack</p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech.map(t => (
-                          <span key={t} className="px-3 py-1 bg-[#0B1320]/5 text-[#0B1320] font-sans text-xs uppercase tracking-wider font-semibold border border-[#0B1320]/10">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
+                  <p className="text-gray-700 font-serif leading-relaxed mb-8 flex-1 text-base md:text-lg">
+                    {project.description}
+                  </p>
+
+                  <div className="border-t border-black/10 pt-4 mt-auto">
+                    <p className="font-sans text-[10px] tracking-widest uppercase text-gray-400 font-bold mb-3">Technology Stack</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map(t => (
+                        <span key={t} className="px-2 py-1 bg-white text-black font-sans text-[10px] uppercase tracking-[0.1em] font-medium border border-black/20">
+                          {t}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </article>
@@ -170,24 +166,24 @@ function CorporateApp() {
         </section>
 
         {/* ── Contact Section ── */}
-        <section id="contact" className="py-24 border-t border-gray-300">
-          <div className="bg-[#0B1320] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
-            {/* Subtle decorative border inside */}
-            <div className="absolute inset-4 border border-white/10 pointer-events-none"></div>
+        <section id="contact" className="py-24 border-t border-black mt-16">
+          <div className="border border-black p-12 md:p-20 text-center flex flex-col items-center bg-white relative">
+            {/* Inner Border */}
+            <div className="absolute inset-2 border border-black/10 pointer-events-none"></div>
 
-            <h2 className="text-3xl font-serif font-bold text-white mb-6 uppercase tracking-widest relative z-10">Inquiries & Correspondences</h2>
-            <p className="text-[#AABBC8] font-serif max-w-2xl text-lg mb-10 relative z-10">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-black mb-4">Inquiries & Correspondences</h2>
+            <p className="text-gray-600 font-serif max-w-2xl text-lg mb-10">
               For consultation, prospective partnerships, or to request a full technical portfolio detailing past engineering ventures.
             </p>
 
-            <div className="flex flex-wrap gap-6 justify-center relative z-10 m-auto mt-7">
+            <div className="flex flex-wrap gap-4 justify-center m-auto mt-4">
               {ObjectLinks.map(link => (
                 <a
                   key={link.id}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-14 h-14 bg-white/5 text-white border border-white/20 hover:bg-[#B7955B] hover:border-[#B7955B] transition-all duration-300"
+                  className="flex items-center justify-center w-12 h-12 bg-white text-black border border-black hover:bg-black hover:text-white transition-all duration-300"
                   title={link.name}
                 >
                   {Icons[link.icon] || <span className="font-sans font-bold uppercase">{link.name.charAt(0)}</span>}
@@ -200,8 +196,8 @@ function CorporateApp() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-white border-t border-gray-300 py-10">
-        <div className="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans tracking-widest uppercase text-gray-500 font-semibold gap-4">
+      <footer className="bg-white border-t border-black py-8 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[10px] font-sans tracking-widest uppercase text-gray-500 font-bold gap-4">
           <p>© {new Date().getFullYear()} Borivoje Cvetković. All Rights Reserved.</p>
           <p>Global Engineering Operations</p>
         </div>
