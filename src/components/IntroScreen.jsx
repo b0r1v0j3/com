@@ -55,8 +55,6 @@ const IntroScreen = ({ onChoice }) => {
           background-color: #000;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: space-between;
           color: #fff;
           font-family: 'Courier New', monospace;
           z-index: 1000;
@@ -145,17 +143,18 @@ const IntroScreen = ({ onChoice }) => {
         .morpheus-section {
           flex: 1;
           display: flex;
-          align-items: center;
+          align-items: flex-end;
           justify-content: center;
           width: 100%;
           z-index: 5;
           position: relative;
+          padding-bottom: 0;
         }
 
         .morpheus-wrapper {
           position: relative;
           display: inline-block;
-          max-height: 80vh;
+          max-height: 95vh;
           max-width: 100vw;
           z-index: 50;
           animation: emergeFromShadow 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -175,7 +174,7 @@ const IntroScreen = ({ onChoice }) => {
 
         .morpheus-img {
           display: block;
-          max-height: 80vh;
+          max-height: 95vh;
           max-width: 100%;
           object-fit: contain;
           filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
@@ -237,3 +236,4 @@ const IntroScreen = ({ onChoice }) => {
 };
 
 export default IntroScreen;
+
