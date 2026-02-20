@@ -32,7 +32,7 @@ const IntroScreen = ({ onChoice }) => {
       {/* Main image container */}
       <div className="morpheus-image-container fade-in-cinematic">
         <img
-          src="/morpheus.jpg"
+          src="/morpheus.png"
           alt="Morpheus offering pills"
           className="morpheus-bg"
         />
@@ -110,9 +110,7 @@ const IntroScreen = ({ onChoice }) => {
           height: 100vh;
           display: flex;
           justify-content: center;
-          align-items: flex-end;
-          transform: scale(0.85);
-          transform-origin: center bottom;
+          align-items: center;
         }
 
         .morpheus-bg {
