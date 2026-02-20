@@ -4,7 +4,6 @@ const IntroScreen = ({ onChoice }) => {
   const [showPills, setShowPills] = useState(false);
   const [dialogue, setDialogue] = useState("This is your last chance.");
 
-  // Cinematic sequence
   useEffect(() => {
     const t1 = setTimeout(() => {
       setDialogue("After this, there is no turning back.");
@@ -24,54 +23,40 @@ const IntroScreen = ({ onChoice }) => {
   return (
     <div className="dark-intro-container">
 
-      {/* Dialogue box positioned at the top */}
-      <div className="dialogue-box fade-in">
-        <p key={dialogue} className="typewriter-text shadow-glow">{dialogue}</p>
+      {/* Text at the very top */}
+      <div className="dialogue-box">
+        <p key={dialogue} className="dialogue-text">{dialogue}</p>
       </div>
 
-      {/* Main image container */}
-      <div className="morpheus-image-container fade-in-cinematic">
+      {/* Morpheus image in the middle, pushed down below text */}
+      <div className="morpheus-section">
         <img
           src="/morpheus.png"
           alt="Morpheus offering pills"
-          className="morpheus-bg"
+          className="morpheus-img"
         />
-
-        {/* Interactive overlays positioned exactly over his hands */}
-        {showPills && (
-          <div className="interactive-pills-layer fade-in-slow">
-
-            {/* Red Pill (Morpheus right hand, screen left) */}
-            <button
-              className="pill-overlay red-pill-zone"
-              onClick={() => onChoice('matrix')}
-              title="The Matrix"
-            >
-              <span className="pill-tooltip">The Matrix</span>
-            </button>
-
-            {/* Blue Pill (Morpheus left hand, screen right) */}
-            <button
-              className="pill-overlay blue-pill-zone"
-              onClick={() => onChoice('corporate')}
-              title="Corporate Reality"
-            >
-              <span className="pill-tooltip">Corporate Reality</span>
-            </button>
-
-          </div>
-        )}
       </div>
+
+      {/* Visible pill buttons at the bottom */}
+      {showPills && (
+        <div className="pills-row fade-in-slow">
+          <button className="pill-btn red-pill" onClick={() => onChoice('matrix')}>
+            Red Pill — The Matrix
+          </button>
+          <button className="pill-btn blue-pill" onClick={() => onChoice('corporate')}>
+            Blue Pill — Corporate
+          </button>
+        </div>
+      )}
 
       <style>{`
         .dark-intro-container {
           height: 100vh;
           width: 100vw;
-          background-color: #000000;
+          background-color: #000;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start;
           color: #fff;
           font-family: 'Courier New', monospace;
           position: fixed;
@@ -81,136 +66,94 @@ const IntroScreen = ({ onChoice }) => {
           overflow: hidden;
         }
 
+        /* ── Text area ── */
         .dialogue-box {
-          position: absolute;
-          top: 4%;
-          z-index: 20;
+          padding-top: 3vh;
           text-align: center;
-          width: 100%;
+          flex-shrink: 0;
         }
 
-        .typewriter-text {
-          font-size: 1.5rem;
+        .dialogue-text {
+          font-size: 1.4rem;
           letter-spacing: 2px;
           margin: 0;
-          display: inline-block;
-          overflow: hidden;
-          white-space: nowrap;
-          color: #ffffff;
-          animation: typing 2.5s steps(40, end);
+          color: #fff;
         }
 
-        .shadow-glow {
-          /* text-shadow: 0 0 10px rgba(0,255,65,0.8); removed */
-        }
-
-        .morpheus-image-container {
-          position: relative;
-          width: 100%;
-          height: 100vh;
+        /* ── Morpheus image ── */
+        .morpheus-section {
+          flex: 1;
           display: flex;
           justify-content: center;
           align-items: center;
+          min-height: 0;
+          width: 100%;
+          padding: 1vh 0;
         }
 
-        .morpheus-bg {
-          width: 100%;
-          height: 100%;
+        .morpheus-img {
+          max-height: 100%;
+          max-width: 100%;
           object-fit: contain;
-          object-position: bottom center;
         }
 
-        .interactive-pills-layer {
-          position: absolute;
-          top: 0; left: 0;
-          width: 100%; height: 100%;
-        }
-
-        /* Invisible clickable regions positioned over the pills in the image */
-        .pill-overlay {
-          position: absolute;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          border-radius: 50%;
+        /* ── Pill buttons ── */
+        .pills-row {
           display: flex;
-          justify-content: center;
-          align-items: center;
+          gap: 40px;
+          padding-bottom: 4vh;
+          flex-shrink: 0;
         }
 
-        /* Responsive positioning based on typical image fit */
-        .red-pill-zone {
-          left: 23%;
-          top: 68%;
-          width: 80px;
-          height: 80px;
-          transform: translate(-50%, -50%);
-        }
-
-        .blue-pill-zone {
-          left: 77%;
-          top: 68%;
-          width: 80px;
-          height: 80px;
-          transform: translate(-50%, -50%);
-        }
-
-
-        .pill-tooltip {
-          position: absolute;
-          bottom: -40px;
-          font-size: 1.2rem;
-          color: rgba(255,255,255,0);
-          white-space: nowrap;
+        .pill-btn {
+          padding: 14px 32px;
+          border: none;
+          border-radius: 30px;
+          font-family: 'Courier New', monospace;
+          font-size: 1rem;
           font-weight: bold;
-          text-transform: uppercase;
-          transition: color 0.3s ease;
-          pointer-events: none;
+          letter-spacing: 1px;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .red-pill-zone:hover .pill-tooltip { color: #ff3333; text-shadow: 0 0 10px red; }
-        .blue-pill-zone:hover .pill-tooltip { color: #3388ff; text-shadow: 0 0 10px blue; }
-
-        /* Animations */
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-        @keyframes blink-caret {
-          from, to { border-color: transparent }
-          50% { border-color: #00FF41; }
-        }
-        
-        @keyframes ping {
-          75%, 100% {
-            transform: scale(1.8);
-            opacity: 0;
-          }
+        .pill-btn:hover {
+          transform: scale(1.08);
         }
 
-        .fade-in { animation: fadeIn 1s ease-in forwards; }
-        .fade-in-cinematic {
-          opacity: 0;
-          animation: cinematicReveal 3s ease-out forwards;
+        .red-pill {
+          background: linear-gradient(135deg, #b91c1c, #ef4444);
+          color: #fff;
+          box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
         }
+        .red-pill:hover {
+          box-shadow: 0 0 35px rgba(239, 68, 68, 0.7);
+        }
+
+        .blue-pill {
+          background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+          color: #fff;
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        .blue-pill:hover {
+          box-shadow: 0 0 35px rgba(59, 130, 246, 0.7);
+        }
+
+        /* ── Animations ── */
         .fade-in-slow {
           opacity: 0;
-          animation: fadeIn 2s ease-in 1s forwards;
+          animation: fadeIn 1.5s ease-in forwards;
         }
 
-        @keyframes cinematicReveal {
-          0% { opacity: 0; filter: blur(10px); }
-          100% { opacity: 1; filter: blur(0); }
-        }
         @keyframes fadeIn {
           to { opacity: 1; }
         }
 
-        /* Mobile Adjustments */
+        /* ── Mobile ── */
         @media (max-width: 768px) {
-          .red-pill-zone { left: 25%; top: 65%; }
-          .blue-pill-zone { left: 75%; top: 65%; }
-          .typewriter-text { font-size: 1.1rem; }
+          .dialogue-text { font-size: 1rem; }
+          .pills-row { gap: 16px; flex-direction: column; align-items: center; }
+          .pill-btn { font-size: 0.85rem; padding: 12px 24px; }
         }
       `}</style>
     </div>
