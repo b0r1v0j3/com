@@ -137,13 +137,13 @@ function CorporateApp() {
                     <div className="relative h-56 bg-gray-100 overflow-hidden mb-8 border border-gray-300 group-hover:border-[#0B1320]/20 transition-colors">
                       <div className="absolute w-[400%] h-[400%] top-0 left-0" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
                         <img
-                          src={\`https://image.thum.io/get/width/800/crop/800/noanimate/\${project.link}\`}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 opacity-90 group-hover:opacity-100"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.target.src = "https://placehold.co/800x600/e2e8f0/64748b?text=Generating+Report...";
-                        }}
+                          src={`https://image.thum.io/get/width/800/crop/800/noanimate/${project.link}`}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 opacity-90 group-hover:opacity-100"
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.src = "https://placehold.co/800x600/e2e8f0/64748b?text=Generating+Report...";
+                          }}
                         />
                       </div>
                     </div>
