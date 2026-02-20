@@ -51,7 +51,7 @@ const IntroScreen = ({ onChoice }) => {
           <div className="morpheus-backlight"></div>
 
           <img
-            src="/morpheus.jpg"
+            src="/morpheus.png"
             alt="Morpheus"
             className="morpheus-img"
           />
