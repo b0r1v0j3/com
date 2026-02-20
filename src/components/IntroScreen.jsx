@@ -47,7 +47,6 @@ const IntroScreen = ({ onChoice }) => {
               onClick={() => onChoice('matrix')}
               title="The Matrix"
             >
-              <div className="pill-pulse red-pulse"></div>
               <span className="pill-tooltip">The Matrix</span>
             </button>
 
@@ -57,7 +56,6 @@ const IntroScreen = ({ onChoice }) => {
               onClick={() => onChoice('corporate')}
               title="Corporate Reality"
             >
-              <div className="pill-pulse blue-pulse"></div>
               <span className="pill-tooltip">Corporate Reality</span>
             </button>
 
@@ -157,27 +155,6 @@ const IntroScreen = ({ onChoice }) => {
           transform: translate(-50%, -50%);
         }
 
-        .pill-pulse {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          position: absolute;
-          animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        /* Red pill overlays the left hand */
-        .red-pulse { background-color: rgba(255, 0, 0, 0.2); box-shadow: 0 0 20px red; }
-        /* Blue pill overlays the right hand */
-        .blue-pulse { background-color: rgba(0, 80, 255, 0.2); box-shadow: 0 0 20px blue; }
-
-        .pill-overlay:hover .pill-pulse {
-          animation: none;
-          transform: scale(1.4);
-          transition: transform 0.3s ease;
-        }
-        
-        .pill-overlay:hover .red-pulse { background-color: rgba(255, 0, 0, 0.5); }
-        .pill-overlay:hover .blue-pulse { background-color: rgba(0, 80, 255, 0.5); }
 
         .pill-tooltip {
           position: absolute;
