@@ -110,12 +110,14 @@ const IntroScreen = ({ onChoice }) => {
           height: 100vh;
           display: flex;
           justify-content: center;
-          align-items: flex-end; /* Align to bottom so head has room */
+          align-items: flex-end;
+          transform: scale(0.85);
+          transform-origin: center bottom;
         }
 
         .morpheus-bg {
           width: 100%;
-          height: 90vh; /* Leave room at top for text */
+          height: 100%;
           object-fit: contain;
           object-position: bottom center;
         }
