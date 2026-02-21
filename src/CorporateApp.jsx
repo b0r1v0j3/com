@@ -2,7 +2,6 @@ import './corporate.css';
 import projects from './data/projects.json';
 import ObjectLinks from './data/links.json';
 import { useState, useEffect, useRef } from 'react';
-import ReactPlayer from 'react-player/youtube';
 
 // High-Grade Editorial Icons
 const Icons = {
@@ -59,18 +58,24 @@ function CorporateApp({ onSwitchTheme }) {
   const [currentTime, setCurrentTime] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const audioInitialized = useRef(false);
+  const iframeRef = useRef(null);
 
   // Auto-play attempt on mount and global interaction listener
   useEffect(() => {
-    // Attempt immediate play (might be blocked)
-    if (!audioInitialized.current) {
-      setIsPlaying(true);
-      audioInitialized.current = true;
-    }
+    const playAudio = () => {
+      if (iframeRef.current && !isPlaying) {
+        iframeRef.current.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: 'playVideo', args: [] }),
+          '*'
+        );
+        setIsPlaying(true);
+        audioInitialized.current = true;
+      }
+    };
 
     // Force play on first user interaction anywhere on the document
     const handleInteraction = () => {
-      setIsPlaying(true);
+      playAudio();
       // Remove listeners once interacted
       ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
         window.removeEventListener(event, handleInteraction);
@@ -86,7 +91,26 @@ function CorporateApp({ onSwitchTheme }) {
         window.removeEventListener(event, handleInteraction);
       });
     };
-  }, []);
+  }, [isPlaying]);
+
+  // Handle manual toggle
+  const toggleAudio = () => {
+    if (!iframeRef.current) return;
+
+    if (isPlaying) {
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
+        '*'
+      );
+      setIsPlaying(false);
+    } else {
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'playVideo', args: [] }),
+        '*'
+      );
+      setIsPlaying(true);
+    }
+  };
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -136,7 +160,7 @@ function CorporateApp({ onSwitchTheme }) {
             <span className="hidden md:inline">{currentDate} | </span>{currentTime}
           </span>
           <button
-            onClick={() => setIsPlaying(!isPlaying)}
+            onClick={toggleAudio}
             className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-2 md:pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0 whitespace-nowrap flex items-center gap-1.5"
             title="Toggle Corporate Ambience"
           >
@@ -358,20 +382,17 @@ function CorporateApp({ onSwitchTheme }) {
         </div>
       </footer>
       {/* ── Hidden Audio Player ── */}
-      <div className="hidden">
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=xy_NKN75Jhw"
-          playing={isPlaying}
-          loop={true}
-          volume={0.3} // Gentle background volume
-          width="0"
-          height="0"
-          config={{
-            youtube: {
-              playerVars: { autoplay: 1 }
-            }
-          }}
-        />
+      <div style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
+        <iframe
+          ref={iframeRef}
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/xy_NKN75Jhw?enablejsapi=1&autoplay=0&loop=1&playlist=xy_NKN75Jhw&controls=0&showinfo=0&modestbranding=1"
+          title="Corporate Ambience"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );
