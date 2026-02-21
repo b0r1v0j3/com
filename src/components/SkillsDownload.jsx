@@ -2,86 +2,86 @@ import { useState, useEffect } from 'react';
 import skills from '../data/skills.json';
 
 const SkillsDownload = () => {
-    const [downloading, setDownloading] = useState(false);
-    const [progress, setProgress] = useState(0);
-    const [complete, setComplete] = useState(false);
-    const [dataStream, setDataStream] = useState('');
+  const [downloading, setDownloading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [complete, setComplete] = useState(false);
+  const [dataStream, setDataStream] = useState('');
 
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
 
-    const initiateDownload = () => {
-        setDownloading(true);
-        setProgress(0);
-        setComplete(false);
-        setDataStream('');
-    };
+  const initiateDownload = () => {
+    setDownloading(true);
+    setProgress(0);
+    setComplete(false);
+    setDataStream('');
+  };
 
-    useEffect(() => {
-        if (downloading && progress < 100) {
-            // Fast progress increment
-            const timer = setTimeout(() => {
-                const increment = Math.floor(Math.random() * 15) + 5;
-                setProgress((prev) => Math.min(prev + increment, 100));
+  useEffect(() => {
+    if (downloading && progress < 100) {
+      // Fast progress increment
+      const timer = setTimeout(() => {
+        const increment = Math.floor(Math.random() * 15) + 5;
+        setProgress((prev) => Math.min(prev + increment, 100));
 
-                // Generate random string for data stream effect
-                let randomStr = '';
-                for (let i = 0; i < 40; i++) {
-                    randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                setDataStream(randomStr);
-            }, 50); // Very fast updates
-            return () => clearTimeout(timer);
-        } else if (downloading && progress === 100) {
-            // Finish download
-            const finishTimer = setTimeout(() => {
-                setDownloading(false);
-                setComplete(true);
-            }, 500); // Brief pause at 100%
-            return () => clearTimeout(finishTimer);
+        // Generate random string for data stream effect
+        let randomStr = '';
+        for (let i = 0; i < 40; i++) {
+          randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-    }, [downloading, progress]);
+        setDataStream(randomStr);
+      }, 50); // Very fast updates
+      return () => clearTimeout(timer);
+    } else if (downloading && progress === 100) {
+      // Finish download
+      const finishTimer = setTimeout(() => {
+        setDownloading(false);
+        setComplete(true);
+      }, 500); // Brief pause at 100%
+      return () => clearTimeout(finishTimer);
+    }
+  }, [downloading, progress]);
 
-    return (
-        <div className="skills-container">
-            {!downloading && !complete && (
-                <div className="download-prompt">
-                    <p className="system-msg">Neural link standby. Ready to receive data.</p>
-                    <button className="action-btn blink-border" onClick={initiateDownload}>
-                        [INITIATE_SKILL_DOWNLOAD]
-                    </button>
-                </div>
-            )}
+  return (
+    <div className="skills-container">
+      {!downloading && !complete && (
+        <div className="download-prompt">
+          <p className="system-msg">Neural link standby. Ready to receive data.</p>
+          <button className="action-btn blink-border" onClick={initiateDownload}>
+            [INITIATE_SKILL_DOWNLOAD]
+          </button>
+        </div>
+      )}
 
-            {downloading && (
-                <div className="downloading-state">
-                    <div className="progress-bar-container">
-                        <div className="progress-bar" style={{ width: `${progress}%` }}></div>
-                    </div>
-                    <div className="status-text glow-text">
-                        [DOWNLOADING_DATA_PACK... {progress}%]
-                    </div>
-                    <div className="data-stream">{dataStream}</div>
-                </div>
-            )}
+      {downloading && (
+        <div className="downloading-state">
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+          </div>
+          <div className="status-text glow-text">
+            [DOWNLOADING_DATA_PACK... {progress}%]
+          </div>
+          <div className="data-stream">{dataStream}</div>
+        </div>
+      )}
 
-            {complete && (
-                <div className="complete-state fade-in">
-                    <div className="status-text success-text glow-text">
-                        [KNOWLEDGE_ACQUIRED]
-                    </div>
-                    <p className="system-msg">"I know Kung Fu."</p>
+      {complete && (
+        <div className="complete-state fade-in">
+          <div className="status-text success-text glow-text">
+            [KNOWLEDGE_ACQUIRED]
+          </div>
+          <p className="system-msg">"I know Kung Fu."</p>
 
-                    <div className="skills-grid">
-                        {skills.map((skill) => (
-                            <div key={skill.id} className="skill-badge matrix-card">
-                                {skill.name}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
+          <div className="skills-grid">
+            {skills.map((skill) => (
+              <div key={skill.id} className="skill-badge matrix-card">
+                {skill.name}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
-            <style>{`
+      <style>{`
         .skills-container {
           margin: 40px 0;
           padding: 20px;
@@ -158,7 +158,7 @@ const SkillsDownload = () => {
         }
 
         .success-text {
-          color: #fff;
+          color: var(--matrix-green);
           text-shadow: 0 0 10px var(--matrix-green), 0 0 20px var(--matrix-green);
         }
 
@@ -203,8 +203,8 @@ const SkillsDownload = () => {
           text-shadow: 0 0 5px var(--matrix-green);
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default SkillsDownload;

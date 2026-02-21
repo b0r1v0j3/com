@@ -10,7 +10,7 @@ const MatrixProjectGrid = () => {
             <span className="card-id">ID: {p.id.padStart(3, '0')}</span>
           </div>
           <div className="card-body">
-            <p className="description">{p.description}</p>
+            <p className="description">{p.matrixDescription || p.description}</p>
             <div className="tech-stack">
               {p.tech.map(t => <span key={t}>[{t}]</span>)}
             </div>
