@@ -93,25 +93,6 @@ function CorporateApp({ onSwitchTheme }) {
     };
   }, [isPlaying]);
 
-  // Handle manual toggle
-  const toggleAudio = () => {
-    if (!iframeRef.current) return;
-
-    if (isPlaying) {
-      iframeRef.current.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
-        '*'
-      );
-      setIsPlaying(false);
-    } else {
-      iframeRef.current.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'playVideo', args: [] }),
-        '*'
-      );
-      setIsPlaying(true);
-    }
-  };
-
   useEffect(() => {
     const updateDateTime = () => {
       const d = new Date();
@@ -159,23 +140,6 @@ function CorporateApp({ onSwitchTheme }) {
           <span className="text-right">
             <span className="hidden md:inline">{currentDate} | </span>{currentTime}
           </span>
-          <button
-            onClick={toggleAudio}
-            className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-2 md:pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0 whitespace-nowrap flex items-center gap-1.5"
-            title="Toggle Corporate Ambience"
-          >
-            {isPlaying ? (
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="4" width="4" height="16" />
-                <rect x="14" y="4" width="4" height="16" />
-              </svg>
-            ) : (
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5,3 19,12 5,21" />
-              </svg>
-            )}
-            AUDIO
-          </button>
           {onSwitchTheme && (
             <button
               onClick={onSwitchTheme}
@@ -200,18 +164,27 @@ function CorporateApp({ onSwitchTheme }) {
           </h2>
 
           <nav className="hidden md:flex gap-10 text-[10px] md:text-[11px] font-sans tracking-[0.15em] uppercase font-bold text-black mt-4">
-            <a href="#firm" className="relative group overflow-hidden px-1 py-1">
+            <button
+              onClick={() => document.getElementById('firm')?.scrollIntoView({ behavior: 'smooth' })}
+              className="relative group overflow-hidden px-1 py-1 cursor-pointer bg-transparent border-none p-0 font-sans tracking-[0.15em] uppercase font-bold text-black"
+            >
               The Firm
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-            </a>
-            <a href="#portfolio" className="relative group overflow-hidden px-1 py-1">
+            </button>
+            <button
+              onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+              className="relative group overflow-hidden px-1 py-1 cursor-pointer bg-transparent border-none p-0 font-sans tracking-[0.15em] uppercase font-bold text-black"
+            >
               Portfolio
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-            </a>
-            <a href="#contact" className="relative group overflow-hidden px-1 py-1">
+            </button>
+            <button
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="relative group overflow-hidden px-1 py-1 cursor-pointer bg-transparent border-none p-0 font-sans tracking-[0.15em] uppercase font-bold text-black"
+            >
               Contact
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-            </a>
+            </button>
           </nav>
         </div>
       </header>
@@ -387,7 +360,7 @@ function CorporateApp({ onSwitchTheme }) {
           ref={iframeRef}
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/xy_NKN75Jhw?enablejsapi=1&autoplay=0&loop=1&playlist=xy_NKN75Jhw&controls=0&showinfo=0&modestbranding=1"
+          src="https://www.youtube.com/embed/xy_NKN75Jhw?enablejsapi=1&autoplay=1&loop=1&playlist=xy_NKN75Jhw&controls=0&showinfo=0&modestbranding=1"
           title="Corporate Ambience"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
