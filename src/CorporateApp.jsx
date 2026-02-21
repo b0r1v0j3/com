@@ -55,11 +55,18 @@ function formatTitle(title) {
 
 function CorporateApp({ onSwitchTheme }) {
   const [currentDate, setCurrentDate] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
-    const d = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    setCurrentDate(d.toLocaleDateString('en-US', options).toUpperCase());
+    const updateDateTime = () => {
+      const d = new Date();
+      const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      setCurrentDate(d.toLocaleDateString('en-US', dateOptions).toUpperCase());
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      setCurrentTime(d.toLocaleTimeString('en-US', timeOptions));
+    };
+    updateDateTime();
+    const timer = setInterval(updateDateTime, 1000);
 
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
@@ -78,6 +85,7 @@ function CorporateApp({ onSwitchTheme }) {
     document.documentElement.style.scrollBehavior = 'smooth';
 
     return () => {
+      clearInterval(timer);
       document.documentElement.classList.remove('theme-corporate');
       document.documentElement.style.scrollBehavior = 'auto';
       observer.disconnect();
@@ -89,15 +97,17 @@ function CorporateApp({ onSwitchTheme }) {
       <div className="corporate-noise"></div>
 
       {/* ── Newspaper Top Meta Line ── */}
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-2 flex justify-between items-center border-b border-black/30 font-sans text-[9px] md:text-[10px] tracking-widest text-black/70 sticky top-0 z-[60] bg-white/90 backdrop-blur-sm shadow-[0_4px_30px_rgba(255,255,255,1)]">
-        <span>VOL. I ... No. 1</span>
-        <span className="hidden md:inline-block">BELGRADE, SERBIA</span>
-        <div className="flex items-center gap-6">
-          <span>{currentDate}</span>
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-2 flex justify-between items-center border-b border-black/30 font-sans text-[9px] md:text-[10px] tracking-widest text-black/70 sticky top-0 z-[60] bg-white/90 backdrop-blur-sm shadow-[0_4px_30px_rgba(255,255,255,1)] relative">
+        <span className="flex-1 text-left">VOL. I ... No. 1</span>
+        <span className="hidden md:block absolute left-1/2 transform -translate-x-1/2 text-center">BELGRADE, SERBIA</span>
+        <div className="flex-1 flex flex-wrap items-center justify-end gap-x-2 md:gap-6">
+          <span className="text-right">
+            <span className="hidden md:inline">{currentDate} | </span>{currentTime}
+          </span>
           {onSwitchTheme && (
             <button
               onClick={onSwitchTheme}
-              className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0"
+              className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-2 md:pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0 whitespace-nowrap"
             >
               DARK MODE
             </button>
