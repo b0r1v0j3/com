@@ -60,12 +60,32 @@ function CorporateApp({ onSwitchTheme }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioInitialized = useRef(false);
 
-  // Auto-play attempt on mount (browsers usually block this until interaction)
+  // Auto-play attempt on mount and global interaction listener
   useEffect(() => {
+    // Attempt immediate play (might be blocked)
     if (!audioInitialized.current) {
       setIsPlaying(true);
       audioInitialized.current = true;
     }
+
+    // Force play on first user interaction anywhere on the document
+    const handleInteraction = () => {
+      setIsPlaying(true);
+      // Remove listeners once interacted
+      ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
+        window.removeEventListener(event, handleInteraction);
+      });
+    };
+
+    ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
+      window.addEventListener(event, handleInteraction, { once: true, passive: true });
+    });
+
+    return () => {
+      ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
+        window.removeEventListener(event, handleInteraction);
+      });
+    };
   }, []);
 
   useEffect(() => {
