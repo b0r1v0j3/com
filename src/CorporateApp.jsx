@@ -106,27 +106,27 @@ function CorporateApp({ onSwitchTheme }) {
       </div>
 
       {/* ── Firm Header (Editorial Style) ── */}
-      <header className="bg-white/95 backdrop-blur shadow-none sticky top-[34px] z-50 border-b-[3px] border-black transition-all duration-300">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-8 flex flex-col items-center justify-center relative inner-header">
+      <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-[34px] z-50 border-b-[3px] border-black transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-3 md:py-4 flex flex-col items-center justify-center relative inner-header">
           <div className="absolute bottom-[-6px] left-0 right-0 h-[1px] bg-black"></div>
 
-          <h1 className="font-serif text-4xl md:text-7xl font-black tracking-tighter text-center leading-none mb-3 transform hover:scale-[1.01] transition-transform duration-700">
+          <h1 className="font-serif text-3xl md:text-5xl font-black tracking-tighter text-center leading-none mb-1.5 transform hover:scale-[1.01] transition-transform duration-700">
             BORIVOJE CVETKOVIĆ
           </h1>
-          <h2 className="text-black text-[10px] md:text-xs font-sans tracking-[0.25em] md:tracking-[0.4em] font-semibold uppercase italic opacity-90">
+          <h2 className="text-black text-[9px] md:text-[10px] font-sans tracking-[0.25em] md:tracking-[0.4em] font-semibold uppercase italic opacity-90">
             Capital Engineering & Architecture
           </h2>
 
-          <nav className="hidden md:flex gap-10 text-[11px] font-sans tracking-[0.15em] uppercase font-bold text-black mt-10">
-            <a href="#firm" className="relative group overflow-hidden px-1">
+          <nav className="hidden md:flex gap-10 text-[10px] md:text-[11px] font-sans tracking-[0.15em] uppercase font-bold text-black mt-4">
+            <a href="#firm" className="relative group overflow-hidden px-1 py-1">
               The Firm
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
             </a>
-            <a href="#portfolio" className="relative group overflow-hidden px-1">
+            <a href="#portfolio" className="relative group overflow-hidden px-1 py-1">
               Portfolio
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
             </a>
-            <a href="#contact" className="relative group overflow-hidden px-1">
+            <a href="#contact" className="relative group overflow-hidden px-1 py-1">
               Contact
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
             </a>
@@ -134,13 +134,13 @@ function CorporateApp({ onSwitchTheme }) {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-16">
+      <main className="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
 
         {/* ── Institution Hero ── */}
-        <section id="firm" className="py-12 border-b-2 border-black mb-16 reveal-on-scroll">
+        <section id="firm" className="py-10 border-b-2 border-black mb-14 reveal-on-scroll">
           <div className="flex flex-col md:flex-row gap-12 items-stretch">
             <div className="flex-1">
-              <h2 className="text-3xl md:text-5xl font-serif font-black text-black leading-[1.1] mb-8 pr-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-black text-black leading-[1.1] mb-6 pr-12">
                 Structuring Scalable<br className="hidden md:block" /> Digital Assets.
               </h2>
               <div className="text-lg md:text-xl text-gray-900 leading-relaxed mb-10 font-serif max-w-2xl relative">
