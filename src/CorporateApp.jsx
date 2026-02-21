@@ -92,14 +92,14 @@ function CorporateApp({ onSwitchTheme }) {
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-2 flex justify-between items-center border-b border-black/30 font-sans text-[9px] md:text-[10px] tracking-widest text-black/70 sticky top-0 z-[60] bg-white/90 backdrop-blur-sm shadow-[0_4px_30px_rgba(255,255,255,1)]">
         <span>VOL. I ... No. 1</span>
         <span className="hidden md:inline-block">BELGRADE, SERBIA</span>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <span>{currentDate}</span>
           {onSwitchTheme && (
             <button
               onClick={onSwitchTheme}
-              className="font-sans text-[9px] tracking-[0.15em] uppercase font-bold text-black/50 hover:text-black transition-colors cursor-pointer bg-transparent border-none p-0"
+              className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0"
             >
-              [ Dark Side ]
+              DARK SIDE
             </button>
           )}
         </div>
