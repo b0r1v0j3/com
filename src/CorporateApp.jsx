@@ -99,7 +99,7 @@ function CorporateApp({ onSwitchTheme }) {
               onClick={onSwitchTheme}
               className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0"
             >
-              DARK SIDE
+              DARK MODE
             </button>
           )}
         </div>
