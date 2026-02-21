@@ -26,7 +26,7 @@ const IntroScreen = ({ onChoice }) => {
             onMouseLeave={() => setHovered(null)}
           >
             <span className="choice-icon">&#9632;</span>
-            <span className="choice-label">DARK_MODE</span>
+            <span className="choice-label">DARK_SIDE</span>
             <span className="choice-desc">Enter the Matrix</span>
           </button>
 
