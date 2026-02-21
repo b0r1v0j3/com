@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import IntroScreen from './components/IntroScreen';
 import CorporateApp from './CorporateApp';
 import MatrixRain from './components/MatrixRain';
 import Typewriter from './components/Typewriter';
@@ -195,11 +194,7 @@ function MatrixApp({ onSwitchTheme }) {
 
 // Main App Router
 function App() {
-  const [themeChoice, setThemeChoice] = useState(null); // 'matrix' | 'corporate' | null
-
-  if (!themeChoice) {
-    return <IntroScreen onChoice={(choice) => setThemeChoice(choice)} />;
-  }
+  const [themeChoice, setThemeChoice] = useState('matrix'); // 'matrix' | 'corporate'
 
   if (themeChoice === 'corporate') {
     return <CorporateApp onSwitchTheme={() => setThemeChoice('matrix')} />;
