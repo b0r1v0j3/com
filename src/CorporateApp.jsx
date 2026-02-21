@@ -1,7 +1,8 @@
 import './corporate.css';
 import projects from './data/projects.json';
 import ObjectLinks from './data/links.json';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import ReactPlayer from 'react-player/youtube';
 
 // High-Grade Editorial Icons
 const Icons = {
@@ -56,6 +57,16 @@ function formatTitle(title) {
 function CorporateApp({ onSwitchTheme }) {
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioInitialized = useRef(false);
+
+  // Auto-play attempt on mount (browsers usually block this until interaction)
+  useEffect(() => {
+    if (!audioInitialized.current) {
+      setIsPlaying(true);
+      audioInitialized.current = true;
+    }
+  }, []);
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -104,6 +115,23 @@ function CorporateApp({ onSwitchTheme }) {
           <span className="text-right">
             <span className="hidden md:inline">{currentDate} | </span>{currentTime}
           </span>
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="font-sans text-[9px] tracking-widest uppercase font-bold text-black border-l border-black/30 pl-2 md:pl-4 hover:opacity-50 transition-opacity cursor-pointer bg-transparent p-0 whitespace-nowrap flex items-center gap-1.5"
+            title="Toggle Corporate Ambience"
+          >
+            {isPlaying ? (
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            ) : (
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
+            )}
+            AUDIO
+          </button>
           {onSwitchTheme && (
             <button
               onClick={onSwitchTheme}
@@ -309,6 +337,22 @@ function CorporateApp({ onSwitchTheme }) {
           </button>
         </div>
       </footer>
+      {/* ── Hidden Audio Player ── */}
+      <div className="hidden">
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=xy_NKN75Jhw"
+          playing={isPlaying}
+          loop={true}
+          volume={0.3} // Gentle background volume
+          width="0"
+          height="0"
+          config={{
+            youtube: {
+              playerVars: { autoplay: 1 }
+            }
+          }}
+        />
+      </div>
     </div>
   );
 }
