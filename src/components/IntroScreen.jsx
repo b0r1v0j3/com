@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
 const IntroScreen = ({ onChoice }) => {
-  const [showPills] = useState(true);
-
+  const [hovered, setHovered] = useState(null);
 
   return (
-    <div className="dark-intro-container">
+    <div className="intro-container">
 
       {/* Dynamic Background Fog Layers */}
       <div className="dense-fog-container">
@@ -14,47 +13,47 @@ const IntroScreen = ({ onChoice }) => {
         <div className="fog-layer mist-3"></div>
       </div>
 
-      {/* ── Center Image ── */}
-      <div className="morpheus-section">
-        <div className="morpheus-wrapper">
-          {/* Spotlight behind him */}
-          <div className="morpheus-backlight"></div>
+      {/* Centered Choice */}
+      <div className="choice-section">
+        <h1 className="choice-title">Choose Your Path</h1>
+        <p className="choice-subtitle">Two realities. One architect.</p>
 
-          <img
-            src="/morpheus.png"
-            alt="Morpheus"
-            className="morpheus-img"
-          />
+        <div className="choice-buttons">
+          <button
+            className={`choice-btn red-choice ${hovered === 'matrix' ? 'active' : ''}`}
+            onClick={() => onChoice('matrix')}
+            onMouseEnter={() => setHovered('matrix')}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <span className="choice-icon">&#9632;</span>
+            <span className="choice-label">DARK_MODE</span>
+            <span className="choice-desc">Enter the Matrix</span>
+          </button>
 
-          {/* Clickable pill zones on the hands */}
-          {showPills && (
-            <>
-              {/* Red pill (Left hand on screen) */}
-              <button
-                onClick={() => onChoice('matrix')}
-                className="pill-zone red-pill-zone pulse-glow-red"
-                aria-label="Enter Matrix (Red Pill)"
-                title="Enter The Matrix"
-              />
-              {/* Blue pill (Right hand on screen) */}
-              <button
-                onClick={() => onChoice('corporate')}
-                className="pill-zone blue-pill-zone pulse-glow-blue"
-                aria-label="Enter Corporate (Blue Pill)"
-                title="Enter Wall Street"
-              />
-            </>
-          )}
+          <span className="choice-divider">or</span>
+
+          <button
+            className={`choice-btn blue-choice ${hovered === 'corporate' ? 'active' : ''}`}
+            onClick={() => onChoice('corporate')}
+            onMouseEnter={() => setHovered('corporate')}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <span className="choice-icon">&#9633;</span>
+            <span className="choice-label">LIGHT_MODE</span>
+            <span className="choice-desc">Enter the Firm</span>
+          </button>
         </div>
       </div>
 
       <style>{`
-        .dark-intro-container {
+        .intro-container {
           position: fixed;
           inset: 0;
           background-color: #000;
           display: flex;
           flex-direction: column;
+          align-items: center;
+          justify-content: center;
           color: #fff;
           font-family: 'Courier New', monospace;
           z-index: 1000;
@@ -107,128 +106,121 @@ const IntroScreen = ({ onChoice }) => {
           100% { transform: translate3d(-50%, 0, 0) scale(1.2); }
         }
 
-        /* ── Text Rendering ── */
-        .dialogue-wrapper {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          padding-top: 5vh;
-          height: 15vh;
+        /* ── Choice Section ── */
+        .choice-section {
+          position: relative;
           z-index: 10;
+          text-align: center;
+          animation: fadeUp 1.5s ease-out forwards;
         }
 
-        .typewriter-text {
-          font-size: 1.5rem;
+        .choice-title {
+          font-size: clamp(1.8rem, 4vw, 3rem);
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          text-shadow: 0 0 20px rgba(255,255,255,0.3);
+          font-weight: 300;
+        }
+
+        .choice-subtitle {
+          font-size: 0.9rem;
+          color: rgba(255,255,255,0.4);
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          margin-bottom: 56px;
+        }
+
+        .choice-buttons {
+          display: flex;
+          align-items: center;
+          gap: 32px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .choice-btn {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.15);
+          color: rgba(255,255,255,0.7);
+          padding: 28px 40px;
+          font-family: 'Courier New', monospace;
+          cursor: pointer;
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          min-width: 180px;
+        }
+
+        .choice-btn:hover {
+          transform: translateY(-4px);
+        }
+
+        .choice-icon {
+          font-size: 1.6rem;
+          transition: all 0.5s;
+        }
+
+        .choice-label {
+          font-size: 0.85rem;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+
+        .choice-desc {
+          font-size: 0.65rem;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          opacity: 0.5;
+        }
+
+        .red-choice:hover, .red-choice.active {
+          border-color: #ff2020;
+          color: #ff4040;
+          box-shadow: 0 0 30px rgba(255,0,0,0.15), inset 0 0 30px rgba(255,0,0,0.05);
+          text-shadow: 0 0 10px rgba(255,0,0,0.5);
+        }
+
+        .blue-choice:hover, .blue-choice.active {
+          border-color: rgba(255,255,255,0.6);
+          color: #fff;
+          box-shadow: 0 0 30px rgba(255,255,255,0.1), inset 0 0 30px rgba(255,255,255,0.03);
+          text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .choice-divider {
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.2);
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          border-right: 2px solid #fff;
-          white-space: nowrap;
-          overflow: hidden;
-          width: fit-content;
-          text-shadow: 0 0 10px rgba(255,255,255,0.8);
-          animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
-        @keyframes typing {
-          from { width: 0; }
-          to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-          from, to { border-color: transparent; }
-          50% { border-color: #fff; }
-        }
-
-        /* ── Morpheus Cinematic Appearance ── */
-        .morpheus-section {
-          flex: 1;
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
-          width: 100%;
-          z-index: 5;
-          position: relative;
-          padding-bottom: 0;
-        }
-
-        .morpheus-wrapper {
-          position: relative;
-          display: inline-block;
-          max-height: 95vh;
-          max-width: 100vw;
-          z-index: 50;
-          animation: emergeFromShadow 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
-        .morpheus-backlight {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 40vw;
-          height: 40vw;
-          background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-          z-index: -1;
-          pointer-events: none;
-        }
-
-        .morpheus-img {
-          display: block;
-          max-height: 95vh;
-          max-width: 100%;
-          object-fit: contain;
-          filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
-        }
-
-        @keyframes emergeFromShadow {
-          0% {
+        @keyframes fadeUp {
+          from {
             opacity: 0;
-            filter: brightness(0.2);
-            transform: scale(1.05) translateY(20px);
+            transform: translateY(20px);
           }
-          100% {
+          to {
             opacity: 1;
-            filter: brightness(1);
-            transform: scale(1) translateY(0);
+            transform: translateY(0);
           }
-        }
-
-        /* ── Clickable Pill Zones ── */
-        .pill-zone {
-          position: absolute;
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          cursor: pointer;
-          border: none;
-          background: transparent;
-          outline: none;
-          opacity: 0;
-          animation: fadePills 2s forwards 0.5s;
-        }
-
-        .red-pill-zone {
-          bottom: 34%; 
-          left: 26%;
-          transform: translate(-50%, 50%);
-        }
-        
-        .blue-pill-zone {
-          bottom: 36%; 
-          right: 25%;
-          transform: translate(50%, 50%);
-        }
-
-        .red-pill-zone:hover { background: radial-gradient(circle, rgba(255,0,0,0.4) 0%, transparent 70%); }
-        .blue-pill-zone:hover { background: radial-gradient(circle, rgba(0,100,255,0.4) 0%, transparent 70%); }
-
-        @keyframes fadePills {
-          to { opacity: 1; }
         }
 
         @media (max-width: 768px) {
-          .typewriter-text { font-size: 1rem; }
-          .pill-zone { width: 50px; height: 50px; }
+          .choice-buttons {
+            flex-direction: column;
+            gap: 20px;
+          }
+          .choice-btn {
+            padding: 20px 32px;
+            min-width: 160px;
+          }
+          .choice-divider {
+            display: none;
+          }
         }
       `}</style>
     </div>
@@ -236,4 +228,3 @@ const IntroScreen = ({ onChoice }) => {
 };
 
 export default IntroScreen;
-

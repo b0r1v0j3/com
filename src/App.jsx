@@ -10,7 +10,7 @@ import links from './data/links.json';
 import './index.css'; // Import Matrix styles exclusively here
 
 // Extract the original Matrix App into a sub-component for cleaner routing
-function MatrixApp() {
+function MatrixApp({ onSwitchTheme }) {
   const [introComplete, setIntroComplete] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
@@ -21,6 +21,32 @@ function MatrixApp() {
       <div className="scanline"></div>
 
       <main className="container">
+        {/* Theme toggle – top right */}
+        <button
+          onClick={onSwitchTheme}
+          style={{
+            position: 'fixed',
+            top: '16px',
+            right: '20px',
+            zIndex: 9999,
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--matrix-green, #00FF41)',
+            fontFamily: 'var(--font-matrix, "Courier New", monospace)',
+            fontSize: '11px',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            opacity: 0.7,
+            transition: 'opacity 0.3s, text-shadow 0.3s',
+            textShadow: '0 0 6px rgba(0,255,65,0.4)',
+          }}
+          onMouseEnter={e => { e.target.style.opacity = '1'; e.target.style.textShadow = '0 0 12px rgba(0,255,65,0.8)'; }}
+          onMouseLeave={e => { e.target.style.opacity = '0.7'; e.target.style.textShadow = '0 0 6px rgba(0,255,65,0.4)'; }}
+        >
+          [ LIGHT_MODE ]
+        </button>
+
         <section className="hero">
           <h1 className="glitch-title" data-text="> Wake up, User...">
             <span className="cursor-char">{'>'} </span>
@@ -176,10 +202,10 @@ function App() {
   }
 
   if (themeChoice === 'corporate') {
-    return <CorporateApp />;
+    return <CorporateApp onSwitchTheme={() => setThemeChoice('matrix')} />;
   }
 
-  return <MatrixApp />;
+  return <MatrixApp onSwitchTheme={() => setThemeChoice('corporate')} />;
 }
 
 export default App;
