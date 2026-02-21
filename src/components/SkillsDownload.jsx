@@ -159,7 +159,7 @@ const SkillsDownload = () => {
 
         .success-text {
           color: var(--matrix-green);
-          text-shadow: 0 0 10px var(--matrix-green), 0 0 20px var(--matrix-green);
+          text-shadow: 0 0 5px var(--matrix-green-shadow);
         }
 
         .data-stream {
