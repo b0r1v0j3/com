@@ -200,6 +200,10 @@ function CorporateApp({ onSwitchTheme }) {
                         {formatTitle(project.title)}
                       </h3>
                     </div>
+                    {/* Hover indicator */}
+                    <div className="hidden md:flex w-8 h-8 rounded-full border border-black/20 items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-black group-hover:text-white transition-all duration-300 mt-2 transform group-hover:-translate-y-1">
+                      <span className="font-sans text-[10px] pb-[1px] pl-[1px]">↗</span>
+                    </div>
                   </div>
 
                   {/* Screenshot presentation */}
@@ -230,7 +234,7 @@ function CorporateApp({ onSwitchTheme }) {
                     </div>
                   </div>
 
-                  <p className="text-gray-800 font-serif leading-relaxed mb-6 flex-1 text-sm md:text-base">
+                  <p className="text-gray-900 font-serif leading-relaxed mb-6 flex-1 text-sm md:text-base pr-4">
                     {project.description}
                   </p>
 
@@ -282,11 +286,17 @@ function CorporateApp({ onSwitchTheme }) {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-white border-t-4 border-double border-black py-6 mt-16">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 flex justify-center text-center">
-          <p className="text-[9px] font-sans tracking-[0.2em] uppercase text-black font-bold">
+      <footer className="bg-white border-t-4 border-double border-black py-6 md:py-8 mt-16 relative">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[9px] font-sans tracking-[0.2em] uppercase text-black font-bold text-center md:text-left">
             © 1992 Borivoje Cvetković. Printed in Global Operations.
           </p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-[9px] font-sans tracking-[0.2em] uppercase text-black font-bold hover:opacity-50 transition-opacity flex items-center gap-2 cursor-pointer bg-transparent border-none p-0 group"
+          >
+            Return to Top <span className="transform group-hover:-translate-y-1 transition-transform">↑</span>
+          </button>
         </div>
       </footer>
     </div>
