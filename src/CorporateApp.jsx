@@ -163,29 +163,6 @@ function CorporateApp({ onSwitchTheme }) {
             Capital Engineering & Architecture
           </h2>
 
-          <nav className="hidden md:flex gap-10 text-[10px] md:text-[11px] font-sans tracking-[0.15em] uppercase font-bold text-black mt-4">
-            <button
-              onClick={() => document.getElementById('firm')?.scrollIntoView({ behavior: 'smooth' })}
-              className="relative group overflow-hidden px-1 py-1 cursor-pointer bg-transparent border-none p-0 font-sans tracking-[0.15em] uppercase font-bold text-black"
-            >
-              The Firm
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-            </button>
-            <button
-              onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-              className="relative group overflow-hidden px-1 py-1 cursor-pointer bg-transparent border-none p-0 font-sans tracking-[0.15em] uppercase font-bold text-black"
-            >
-              Portfolio
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-            </button>
-            <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="relative group overflow-hidden px-1 py-1 cursor-pointer bg-transparent border-none p-0 font-sans tracking-[0.15em] uppercase font-bold text-black"
-            >
-              Contact
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-            </button>
-          </nav>
         </div>
       </header>
 
