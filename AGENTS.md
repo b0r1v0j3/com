@@ -16,6 +16,7 @@
 - Corporate styles must not leak into the Matrix theme scope. Always wrap Corporate styling behind the `.theme-corporate` wrapper class.
 - Project copy is theme-specific: use `matrixDescription` for Matrix and `corporateDescription` for Corporate so tone stays isolated per theme.
 - Project tech badges should reflect the real local project stack, not assumptions from the live site.
+- Portfolio tech badges should stay user-facing and code-focused; avoid hosting or backend service labels unless they are intentionally part of the presentation.
 
 ## Suggestions
 - None yet.
