@@ -28,10 +28,6 @@
         "name": "Git"
     },
     {
-        "id": "figma",
-        "name": "Figma"
-    },
-    {
         "id": "supabase",
         "name": "Supabase"
     },
