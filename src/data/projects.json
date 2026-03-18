@@ -3,7 +3,8 @@
     "id": "1",
     "title": "workers_united",
     "description": "A full-service digital platform connecting international employers with qualified workforce candidates. Streamlines the recruitment pipeline, visa documentation, and onboarding processes across European markets.",
-    "matrixDescription": "Protocol for human resources synchronization. Establishes a secure link between operative units and system architects. Optimizing the labor market code.",
+    "corporateDescription": "A cross-border workforce platform built to connect European employers with qualified international candidates while simplifying recruitment, visa handling, and onboarding workflows.",
+    "matrixDescription": "Workforce synchronization protocol active. Verified channels connect command hubs with remote operators while recruitment, visa packets, and onboarding sequences run without signal loss.",
     "tech": [
       "Next.js",
       "Tailwind"
@@ -15,7 +16,8 @@
     "id": "2",
     "title": "podovi",
     "description": "An e-commerce catalogue and advisory platform for premium flooring solutions. Features an extensive product library of engineered surfaces from leading European manufacturers.",
-    "matrixDescription": "Repository of surface layers. [Material_Library]: LOADED. High-grade textures and assets for upgrading your space construct.",
+    "corporateDescription": "A premium flooring catalogue and advisory experience designed to present curated collections, technical details, and confident product selection for modern residential and commercial interiors.",
+    "matrixDescription": "Surface module archive online. Engineered layers, finish specs, and material intelligence indexed for rapid upgrades across the spatial grid.",
     "tech": [
       "Next.js",
       "Tailwind"
@@ -23,5 +25,18 @@
     "link": "https://podovi.online",
     "image": "https://placehold.co/600x400/003B00/00FF41?text=Podovi",
     "customImage": "/podovi-screenshot.png"
+  },
+  {
+    "id": "3",
+    "title": "steel_concept",
+    "description": "A corporate presentation platform for a steel and construction materials business, focused on product clarity, credibility, and direct B2B contact paths.",
+    "corporateDescription": "A corporate presentation platform for a steel and construction materials business, focused on product clarity, company trust signals, and direct B2B contact paths.",
+    "matrixDescription": "Industrial materials node detected. Steel inventory, supply signals, and partner access routes are organized through a hardened commercial interface.",
+    "tech": [
+      "Next.js",
+      "Tailwind"
+    ],
+    "link": "https://www.steel-concept.com",
+    "image": "https://placehold.co/800x600/f5f5f5/111111?text=Steel+Concept"
   }
 ]

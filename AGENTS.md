@@ -14,6 +14,7 @@
 ## Common Gotchas
 - Ensure the Canvas Matrix Rain effect performs well and doesn't block the main thread.
 - Corporate styles must not leak into the Matrix theme scope. Always wrap Corporate styling behind the `.theme-corporate` wrapper class.
+- Project copy is theme-specific: use `matrixDescription` for Matrix and `corporateDescription` for Corporate so tone stays isolated per theme.
 
 ## Suggestions
 - None yet.

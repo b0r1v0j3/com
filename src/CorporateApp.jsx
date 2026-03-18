@@ -48,9 +48,11 @@ const Icons = {
 };
 
 function formatTitle(title) {
-  if (title.toLowerCase() === 'podovi') return 'Podovi';
-  if (title === 'workers_united') return 'Workers United';
-  return title.replace('_', ' ');
+  return title
+    .split('_')
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
 }
 
 function CorporateApp({ onSwitchTheme }) {
@@ -216,12 +218,18 @@ function CorporateApp({ onSwitchTheme }) {
           </p>
 
           <div className="grid md:grid-cols-2 gap-y-16">
-            {projects.map((project, index) => (
-              <a
+            {projects.map((project, index) => {
+              const isLinked = Boolean(project.link);
+              const WrapperTag = isLinked ? 'a' : 'div';
+
+              return (
+              <WrapperTag
                 key={project.id}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(isLinked ? {
+                  href: project.link,
+                  target: '_blank',
+                  rel: 'noopener noreferrer'
+                } : {})}
                 className={`group block relative reveal-on-scroll ${index % 2 === 0 ? 'md:border-r md:border-black/20 md:pr-8 delay-100' : 'md:pl-8 delay-200'} `}
               >
                 <article className="flex flex-col h-full transform transition-transform duration-500 hover:-translate-y-1">
@@ -233,15 +241,21 @@ function CorporateApp({ onSwitchTheme }) {
                       </h3>
                     </div>
                     {/* Hover indicator */}
-                    <div className="hidden md:flex w-8 h-8 rounded-full border border-black/20 items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-black group-hover:text-white transition-all duration-300 mt-2 transform group-hover:-translate-y-1">
-                      <span className="font-sans text-[10px] pb-[1px] pl-[1px]">↗</span>
-                    </div>
+                    {isLinked ? (
+                      <div className="hidden md:flex w-8 h-8 rounded-full border border-black/20 items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-black group-hover:text-white transition-all duration-300 mt-2 transform group-hover:-translate-y-1">
+                        <span className="font-sans text-[10px] pb-[1px] pl-[1px]">↗</span>
+                      </div>
+                    ) : (
+                      <div className="hidden md:flex items-center justify-center mt-2">
+                        <span className="font-sans text-[8px] tracking-[0.2em] uppercase text-gray-400 font-bold">Private</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Screenshot presentation */}
                   <div className="bg-white overflow-hidden mb-5 border border-black relative">
                     <div className="w-full h-48 md:h-56 overflow-hidden relative grayscale contrast-125 sepia-[.1] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700">
-                      {project.title === 'podovi' ? (
+                      {project.customImage ? (
                         <div className="absolute inset-0 bg-[#ebebeb] flex items-center justify-center p-0.5">
                           <img
                             src={project.customImage}
@@ -250,7 +264,7 @@ function CorporateApp({ onSwitchTheme }) {
                             loading="lazy"
                           />
                         </div>
-                      ) : (
+                      ) : project.link ? (
                         <div className="absolute w-[400%] h-[400%] top-0 left-0 bg-[#ebebeb]" style={{ transform: 'scale(0.25)', transformOrigin: '0 0' }}>
                           <img
                             src={`https://image.thum.io/get/width/800/crop/800/noanimate/${project.link}`}
@@ -258,8 +272,17 @@ function CorporateApp({ onSwitchTheme }) {
                             className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-700"
                             loading="lazy"
                             onError={(e) => {
-                              e.target.src = "https://placehold.co/800x600/ffffff/000000?text=Generating+Report...";
+                              e.target.src = project.image || "https://placehold.co/800x600/ffffff/000000?text=Generating+Report...";
                             }}
+                          />
+                        </div>
+                      ) : (
+                        <div className="absolute inset-0 bg-[#ebebeb] flex items-center justify-center p-3">
+                          <img
+                            src={project.image || "https://placehold.co/800x600/ffffff/000000?text=Private+Project"}
+                            alt={project.title}
+                            className="w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                            loading="lazy"
                           />
                         </div>
                       )}
@@ -267,7 +290,7 @@ function CorporateApp({ onSwitchTheme }) {
                   </div>
 
                   <p className="text-gray-900 font-serif leading-relaxed mb-6 flex-1 text-sm md:text-base pr-4">
-                    {project.description}
+                    {project.corporateDescription || project.description}
                   </p>
 
                   <div className="mt-auto">
@@ -280,8 +303,8 @@ function CorporateApp({ onSwitchTheme }) {
                     </div>
                   </div>
                 </article>
-              </a>
-            ))}
+              </WrapperTag>
+            )})}
           </div>
         </section>
 

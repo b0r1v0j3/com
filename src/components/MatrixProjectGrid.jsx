@@ -3,21 +3,29 @@ import projects from '../data/projects.json';
 const MatrixProjectGrid = () => {
   return (
     <div className="matrix-grid">
-      {projects.map(p => (
-        <div key={p.id} className="matrix-card">
-          <div className="card-header">
-            <span className="card-title">{'>'} {p.title}</span>
-            <span className="card-id">ID: {p.id.padStart(3, '0')}</span>
-          </div>
-          <div className="card-body">
-            <p className="description">{p.matrixDescription || p.description}</p>
-            <div className="tech-stack">
-              {p.tech.map(t => <span key={t}>[{t}]</span>)}
+      {projects.map(p => {
+        const hasLink = Boolean(p.link);
+
+        return (
+          <div key={p.id} className="matrix-card">
+            <div className="card-header">
+              <span className="card-title">{'>'} {p.title}</span>
+              <span className="card-id">ID: {p.id.padStart(3, '0')}</span>
             </div>
-            <a href={p.link} target="_blank" rel="noopener noreferrer" className="access-btn">ACCESS_PROJECT()</a>
+            <div className="card-body">
+              <p className="description">{p.matrixDescription || p.description}</p>
+              <div className="tech-stack">
+                {p.tech.map(t => <span key={t}>[{t}]</span>)}
+              </div>
+              {hasLink ? (
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className="access-btn">ACCESS_PROJECT()</a>
+              ) : (
+                <span className="access-btn access-btn-disabled">LINK_PENDING()</span>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       <style>{`
         .matrix-grid {
@@ -85,6 +93,12 @@ const MatrixProjectGrid = () => {
           background: var(--matrix-green);
           color: var(--matrix-bg);
           box-shadow: 0 0 10px var(--matrix-green);
+        }
+        .access-btn-disabled {
+          border-color: var(--matrix-green-dim);
+          color: var(--matrix-green-dim);
+          cursor: not-allowed;
+          box-shadow: none;
         }
       `}</style>
     </div>
