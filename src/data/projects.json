@@ -34,8 +34,7 @@
     "matrixDescription": "Industrial materials node detected. Steel inventory, supply signals, and partner access routes are organized through a hardened commercial interface.",
     "tech": [
       "HTML",
-      "CSS",
-      "JavaScript"
+      "CSS"
     ],
     "link": "https://www.steel-concept.com",
     "image": "https://placehold.co/800x600/f5f5f5/111111?text=Steel+Concept"
