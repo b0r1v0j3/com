@@ -7,7 +7,9 @@
     "matrixDescription": "Workforce synchronization protocol active. Verified channels connect command hubs with remote operators while recruitment, visa packets, and onboarding sequences run without signal loss.",
     "tech": [
       "Next.js",
-      "Tailwind"
+      "Tailwind CSS",
+      "TypeScript",
+      "Supabase"
     ],
     "link": "https://workersunited.eu",
     "image": "https://placehold.co/600x400/003B00/00FF41?text=Workers+United"
@@ -20,7 +22,9 @@
     "matrixDescription": "Surface module archive online. Engineered layers, finish specs, and material intelligence indexed for rapid upgrades across the spatial grid.",
     "tech": [
       "Next.js",
-      "Tailwind"
+      "Tailwind CSS",
+      "TypeScript",
+      "Supabase"
     ],
     "link": "https://podovi.online",
     "image": "https://placehold.co/600x400/003B00/00FF41?text=Podovi",
@@ -33,8 +37,10 @@
     "corporateDescription": "A corporate presentation platform for a steel and construction materials business, focused on product clarity, company trust signals, and direct B2B contact paths.",
     "matrixDescription": "Industrial materials node detected. Steel inventory, supply signals, and partner access routes are organized through a hardened commercial interface.",
     "tech": [
-      "Next.js",
-      "Tailwind"
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vercel"
     ],
     "link": "https://www.steel-concept.com",
     "image": "https://placehold.co/800x600/f5f5f5/111111?text=Steel+Concept"
