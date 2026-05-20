@@ -47,7 +47,6 @@
     "matrixDescription": "Procurement intelligence grid. [Tender_Discovery_Engine]: ONLINE. Real-time scanning and extraction of public compliance protocols, scanning and decoding restricted sector archives.",
     "tech": [
       "Next.js",
-      "Supabase",
       "TypeScript"
     ],
     "link": "https://konzorcijum.com",
