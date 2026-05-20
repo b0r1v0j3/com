@@ -17,6 +17,7 @@
 - Project copy is theme-specific: use `matrixDescription` for Matrix and `corporateDescription` for Corporate so tone stays isolated per theme.
 - Project tech badges should reflect the real local project stack, not assumptions from the live site.
 - Portfolio tech badges should stay user-facing and code-focused; avoid hosting or backend service labels unless they are intentionally part of the presentation.
+- The Newspaper (Corporate) footer must remain slim and compact. Keep padding tight (e.g. `py-3 md:py-4`) and preserve the double-line border (`border-t-4 border-double border-black`). Avoid large blank spaces (`pb-24`) at the bottom of the main wrapper.
 
 ## Suggestions
 - Decouple project presentation details (such as custom scaling, crop levels, sepia states, hover behavior) from components by defining them directly as metadata inside `projects.json` to keep layout files strictly data-driven.
