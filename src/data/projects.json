@@ -38,5 +38,20 @@
     ],
     "link": "https://www.steel-concept.com",
     "image": "https://placehold.co/800x600/f5f5f5/111111?text=Steel+Concept"
+  },
+  {
+    "id": "4",
+    "title": "konzorcijum",
+    "description": "A real-time procurement intelligence and analytics platform. Features automated discovery, ingestion, and extraction of public tenders, utilizing a robust document analysis pipeline to monitor compliance, extract deadlines, and categorize multi-lot bids.",
+    "corporateDescription": "An operative intelligence platform for public procurement. Scans and monitors real-time tenders, automates document analysis, extracts compliance terms, and organizes multi-lot opportunities.",
+    "matrixDescription": "Procurement intelligence grid. [Tender_Discovery_Engine]: ONLINE. Real-time scanning and extraction of public compliance protocols, scanning and decoding restricted sector archives.",
+    "tech": [
+      "Next.js",
+      "Supabase",
+      "TypeScript"
+    ],
+    "link": "https://konzorcijum.com",
+    "image": "https://placehold.co/600x400/003B00/00FF41?text=Konzorcijum",
+    "customImage": "/konzorcijum-screenshot.png"
   }
 ]

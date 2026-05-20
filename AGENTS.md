@@ -19,4 +19,5 @@
 - Portfolio tech badges should stay user-facing and code-focused; avoid hosting or backend service labels unless they are intentionally part of the presentation.
 
 ## Suggestions
-- None yet.
+- Decouple project presentation details (such as custom scaling, crop levels, sepia states, hover behavior) from components by defining them directly as metadata inside `projects.json` to keep layout files strictly data-driven.
+- Consider moving format helpers (like title casing or string replacements) to a dedicated `src/utils/format.js` module, allowing reuse between themes and the simulated AI chat brain component.
