@@ -341,7 +341,8 @@ function CorporateApp({ onSwitchTheme }) {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-white border-t-4 border-double border-black py-6 md:py-8 mt-16 relative">
+      <footer className="bg-white border-t-[3px] border-black py-6 md:py-8 mt-16 relative">
+        <div className="absolute top-[-6px] left-0 right-0 h-[1px] bg-black"></div>
         <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[9px] font-sans tracking-[0.2em] uppercase text-black font-bold text-center md:text-left">
             © 1992 Borivoje Cvetković. Printed in Global Operations.
